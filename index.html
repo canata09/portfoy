@@ -522,7 +522,7 @@
 
     function Header() {
       const [page, setPage] = useState('projectdetail');
-      const [activeSubmenu, setActiveSubmenu] = useState(null);
+
 
       const projectdetailMenuItems = [
         {
@@ -555,7 +555,7 @@
         },
       ];
 
-
+      const [activeSubmenu, setActiveSubmenu] = useState(projectdetailMenuItems[0].submenu);
       const menuItems = [...projectdetailMenuItems];
 
 
