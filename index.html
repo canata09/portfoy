@@ -534,18 +534,21 @@
               content: [
                 <h4>A small river named Duden flows by their place and supplies it with the necessary regelialia.</h4>
               ],
+              url: 'https://google.com',
             },
             {
               name: 'Proje 2',
               content: [
                 <h4>A small river named Duden flows by their place and supplies it with the necessary regelialia.</h4>
               ],
+              url: 'https://google.com',
             },
             {
               name: 'Proje 3',
               content: [
                 <h4>A small river named Duden flows by their place and supplies it with the necessary regelialia.</h4>
               ],
+              url: 'https://google.com',
             },
 
           ]
@@ -694,12 +697,12 @@
                           <div className="gallery-item" key={index}>
 
                             <div class="gallery-item-icon">
-                              <a href="https://atayapimimarlik.gen.tr/">
+                              <a href={subitem.url}>
                                 <i class="fas fa-file"></i>
                               </a>
                             </div>
                             <div class="gallery-item-text">
-                              <a href="https://atayapimimarlik.gen.tr/">
+                              <a>
                                 <h2>{subitem.name}</h2>
                                 <small>Dec 14, 2018 Travel 5 Comment</small>
                                 {subitem.content}
