@@ -93,6 +93,7 @@
         height: auto;
         display: flex;
         flex-wrap: wrap;
+        align-items: flex-start;
         background-color: #f8f9fa;
         padding-bottom: 1rem;
         padding: 2% 2%;
@@ -133,6 +134,7 @@
         height: auto;
         display: flex;
         flex-wrap: wrap;
+        align-items: flex-start;
         background-color: #f8f9fa;
         padding-bottom: 1rem;
         padding: 2% 2%;
@@ -175,6 +177,7 @@
         height: auto;
         display: flex;
         flex-wrap: wrap;
+        align-items: flex-start;
         background-color: #f8f9fa;
         padding-bottom: 1rem;
         padding: 2% 2%;
@@ -223,12 +226,11 @@
 
 
 .gallery-item-icon i {
-    color: #d05100;
+    color: #7cd1f5;
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
     padding: 2%;
-    border: 1px solid #dee2e6;
     border-radius: 10px;
 }
 

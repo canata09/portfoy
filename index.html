@@ -23,6 +23,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
   <link rel="stylesheet" href="helpers/helpers.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
@@ -42,9 +47,15 @@
 
       // Sample notifications data
       const bildirim = [
-        { id: 1, baslik: "Proje 1", url: "https://google.com", content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", tags: ["NODEJS", "REACTJS"], image: "assets/img/31html.png" },
-        { id: 2, baslik: "Proje 2", url: "https://google.com", content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", tags: ["NODEJS", "REACTJS"], image: "assets/img/26html.png" },
-        { id: 3, baslik: "Proje 3", url: "https://google.com", content: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.", tags: ["NODEJS", "REACTJS"], image: "assets/img/22html.png" },
+        { id: 1, baslik: "Serem Metal", url: "https://seremmetal.com/", content: "Teknik yapıştırıcı gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler Çimento esaslı sıvalar, Seramik yapıştırıcıları, Seramik derz dolguları gibi kategorilere dahildir. Kullanıcıların yapıştırıcı malzeme gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["PHP", "HTML & CSS"], image: "assets/img/31html.png" },
+        { id: 2, baslik: "Ata Yapı Mimarlık", url: "https://atayapimimarlik.gen.tr/", content: "Mimarlık ve Mühendislik gibi alanlarda hizmet veren kurumsal firmanın websitesidir. Tanıtılan hizmetler mimarlık ve mühendislik hizmetleri gibi kategorilere dahildir. Kullanıcıların rahat yaşam gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["WORDPRESS", "GUTENBERG BLOCKS", "NODEJS", "PHP", "HTML & CSS"], image: "assets/img/26html.png" },
+        { id: 3, baslik: "Dijital Dershanem", url: "#", content: "Üniversite öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler ÖABT, KPSS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["NODEJS", "REACTJS", "TAILWIND"], image: "assets/img/22html.png" },
+        { id: 4, baslik: "TUSDATA", url: "https://www.tusdata.com/", content: "Tıp öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler TUS, DUS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["WORDPRESS", "WORDPRESS PLUGIN", "PHP", "HTML & CSS"], image: "assets/img/18html.png" },
+        { id: 5, baslik: "Medyarella Creative", url: "https://www.aymucevher.com/", content: "Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi alanlarında reklamcılık yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["WORDPRESS", "JAVASCRIPT", "HTML & CSS"], image: "assets/img/07html.png" },
+        { id: 6, baslik: "E-Tail Market", url: "https://www.etail.com.tr/", content: "Dijital oyun kartı, Bilgisayar oyunları gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler tüm dijital ürünleri kategorilerini kapsamaktadır. Kullanıcıların dijital alanda eğlence gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["OPENCART", "TWIG", "PHP", "JAVASCRIPT", "AJAX"], image: "assets/img/14html.png" },
+        { id: 7, baslik: "Coin Modules Kripto", url: "#", content: "Kripto para gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler kripto para haberleri gibi kategorilere dahildir. Kullanıcıların çevrimiçi varlık gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["PHP", "JAVASCRIPT", "HTML & CSS"], image: "assets/img/12html.png" },
+        { id: 8, baslik: "Feka Reklam", url: "#", content: "Reklam, Tabela, Ahşap Giydirme ve Mühendislik gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve mühendislik gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["PHP", "JAVASCRIPT", "HTML & CSS"], image: "assets/img/11html.png" },
+        { id: 9, baslik: "Saatçioğulları Optik Market", url: "https://www.saatciogullari.com/", content: "Optik gözlük, Saat gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler aksesuar koleksiyonları gibi kategorilere dahildir. Kullanıcıların aksesuar gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["OPENCART", "MYSQL"], image: "assets/img/00html.png" },
       ];
 
       // Filter the notifications when activeSubmenu changes
@@ -203,7 +214,7 @@
                   <li>Giriş
                     <span>(8)</span>
                   </li>
-                  <li>Tecrübeler
+                  <li>Yetkinlikler
                     <span>(6)</span>
                   </li>
                   <li>Kişilik
@@ -221,10 +232,9 @@
                       <h4 style={{ fontSize: '14px', margin: '10px 0' }}>Tam Özgeçmişi Görüntüle</h4>
                     </div>
                   </li>
-                  <li
-                    style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f9f9f9', marginBottom: '10px', padding: '10px 15px' }}>
-                    <a href="/">
-                      <img src="assets/icon/office.png" alt="Article Image" style={{ width: '100px', borderRadius: '4px' }} />
+                  <li>
+                    <a href="/" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f9f9f9', marginBottom: '10px', padding: '10px 15px' }}>
+                      <img src="office.png" alt="Article Image" style={{ width: '100px', borderRadius: '4px' }} />
                       <div style={{ marginLeft: '15px', marginBottom: '15px', width: '100%' }}>
                         <p style={{ color: '#999', fontSize: '12px' }}>2025</p>
                         <h4 style={{ fontSize: '14px', margin: '10px 0' }}>Tam Proje Arşivini Görüntüle</h4>
@@ -239,13 +249,19 @@
               <section style={{ flexDirection: 'row', }}>
                 <span className="tag">NODEJS</span>
                 <span className="tag">REACTJS</span>
+                <span className="tag">VUEJS</span>
+                <span className="tag">TYPESCRIPT</span>
                 <span className="tag">TAILWIND</span>
                 <span className="tag">HTML & CSS</span>
                 <span className="tag">JAVASCRIPT</span>
                 <span className="tag">WORDPRESS</span>
                 <span className="tag">WORDPRESS PLUGIN</span>
                 <span className="tag">GUTENBERG BLOCKS</span>
+                <span className="tag">OPENCART</span>
                 <span className="tag">PHP</span>
+                <span className="tag">TWIG</span>
+                <span className="tag">AJAX</span>
+                <span className="tag">MYSQL</span>
               </section>
               <article>
                 <h3>Günün Sözü</h3>
@@ -284,21 +300,25 @@
 
           <div className="container-fluid" >
 
+
+
+            {/* PROJECT */}
             <div className="component" style={{ padding: '0% 0%', }}>
 
               <div className="col-md">
 
                 <section>
-                  <h2>Frontend Geliştirici Takım Lideri</h2>
-                  <h3>Frontend Geliştirici </h3>
-                  <h4>ERHA Eğitim Basın Yayın Bilgisayar Ltd. Şti, Ankara, TÜRKİYE</h4>
-                  <p>• React.js, Redux ve NodeJS Framework ve kütüphaneleri • ES6, TypeScript ile çalışmak • HTML5, CSS3, Bootstrap, ve jQuery teknolojileri • XML, JSON, SOAP/REST Web Services ile veri işleme • Git veya benzeri sürüm kontrol sistemleri • Web standartları, UI/UX tasarımı ve Responsive site • Figma dosyalarını HTML/CSS'e dönüştürme • Çapraz Tarayıcı ortamda kod geliştirme • B2B Dashboard çözümleri tasarımı • Proje ile ilgili teknik ve görsel tasarım • Opensource CSS  kütüphaneleri entegrasyonu • Frontend teknolojilerin temeli, JavaScript, AJAX, HTML5 ve CSS3</p>
+                  <a href="#">
+                    <h2>Frontend Geliştirici Takım Lideri</h2>
+                    <h3>Frontend Geliştirici </h3>
+                    <h4>ERHA Eğitim Basın Yayın Bilgisayar Ltd. Şti, Ankara, TÜRKİYE</h4>
+                    <p>• React.js, Redux ve NodeJS Framework ve kütüphaneleri • ES6, TypeScript ile çalışmak • HTML5, CSS3, Bootstrap, ve jQuery teknolojileri • XML, JSON, SOAP/REST Web Services ile veri işleme • Git veya benzeri sürüm kontrol sistemleri • Web standartları, UI/UX tasarımı ve Responsive site • Figma dosyalarını HTML/CSS'e dönüştürme • Çapraz Tarayıcı ortamda kod geliştirme • B2B Dashboard çözümleri tasarımı • Proje ile ilgili teknik ve görsel tasarım • Opensource CSS kütüphaneleri entegrasyonu • Frontend teknolojilerin temeli, JavaScript, AJAX, HTML5 ve CSS3</p>
+                  </a>
                 </section>
                 <section style={{ flexDirection: 'row', }}>
                   <span class="tag">NODEJS</span>
                   <span class="tag">REACTJS</span>
                   <span class="tag">TAILWIND</span>
-                  <span class="tag">HTML & CSS</span>
                 </section>
 
               </div>
@@ -307,10 +327,10 @@
                 <section>
                   <ul>
                     {/* 
-                    <li><u>2024 —
-                        <span>(HALEN)</span></u>
-                    </li>
-                    */}
+                <li><u>2024 —
+                    <span>(HALEN)</span></u>
+                </li>
+                */}
                     <li>
                       <u>04/2024 —  12/2024</u>
                     </li>
@@ -320,7 +340,7 @@
               </div>
 
             </div>
-
+            {/* PROJECT */}
             <div className="component" style={{ padding: '0% 0%', }}>
 
               <div className="col-md">
@@ -333,10 +353,10 @@
                   </a>
                 </section>
                 <section style={{ flexDirection: 'row', }}>
-                  <span class="tag">HTML & CSS</span>
                   <span class="tag">WORDPRESS</span>
-                  <span class="tag">NODEJS</span>
+                  <span class="tag">WORDPRESS PLUGIN</span>
                   <span class="tag">PHP</span>
+                  <span class="tag">HTML & CSS</span>
                 </section>
 
               </div>
@@ -353,6 +373,245 @@
               </div>
 
             </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="https://www.aymucevher.com/">
+                    <h3>WordPress Geliştirici</h3>
+                    <h4>Medyarella Creative Reklam Ajansı, Ankara, TÜRKİYE</h4>
+                    <p>• Özel WordPress eklentileri ve temaları geliştirme • Wordpress CMS ve eklentileri uygulamaları • Bir temayı veya yapılan tasarımı sağlanan içerikler ile hayata geçirilmesi • Panel/eklenti güncellemelerini takip edilmesi • Wordpress ve site hızı optimizasyonu • E-Ticaret web siteleri oluşturmuş WooCommerce altyapısı • PHP ve WordPress bilgisine sahip olmak ve site kurulumu yapabilmek, oluşan hataları çözebilmek • Frontend teknolojilerin temeli, PHP programlama, JavaScript, React, HTML5 ve CSS3 • Nesne yönelimli PHP programlama • Cpanel, plesk panel, paylaşımlı ve WHM hosting • Domain, DNS, Mail Server konuları • MySQL ve veritabanı yönetimi • Ul/UX'in en iyi uygulamaları ve duyarlı tasarımın uygulanması • Görsel Tasarım ve şablon düzenlemeleri yapmak (CSS) • Git gibi sürüm kontrol sistemleri</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">WORDPRESS</span>
+                  <span class="tag">JAVASCRIPT</span>
+                  <span class="tag">HTML & CSS</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>09/2023 —  11/2023</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="https://www.etail.com.tr/">
+                    <h3>Bilgisayar Programcısı</h3>
+                    <h4>5Deniz Ltd, Oyun Kodu, Hediye Kartı ve Epin Satış Platformu, Ankara, TÜRKİYE</h4>
+                    <p>• B2C ve B2B Opencart E-ticaret yazılımı geliştirme • Güvenli web uygulamalarının geliştirilmesi ve zayıf noktaları • Nesneye Yönelik Programlama deneyimi • X-Fee Pro Shipping sistemleri kurulumu • PayPal Global Seçenek İşleri • Vue.js, TypeScript ve NodeJS Framework ve kütüphaneleri • Modern Ön Uç Vue Teknolojileri • ES6, TypeScript ile çalışmak • RESTful API'ler ve arka uç hizmetleriyle entegrasyon • Duyarlı web tasarımı ilkeleri ve tarayıcılar arası uyumluluk • Görsel tasarım aracılığıyla uygulamaların ön ucu • NodeJS geliştirme deneyimi ve Mac OS • Github CI-CD metodolojilerini kullanarak çalıştı • Ölçeklenebilir, güvenilir, bakımı yapılabilir ve yeniden kullanılabilir kod • Sürekli entegrasyon akışında çözümler sunma • Prototiplerin uygulanması • Tarayıcı oluşturma ve tarayıcı animasyonu maliyetleri • Popüler JavaScript çerçevelerinde deneyimli</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">OPENCART</span>
+                  <span class="tag">TWIG</span>
+                  <span class="tag">PHP</span>
+                  <span class="tag">JAVASCRIPT</span>
+                  <span class="tag">AJAX</span>
+
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>04/2023 —  07/2023</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="#">
+                    <h3>Web Geliştirici</h3>
+                    <h4>Coin Modules, Kripto Paralar, Akdeniz, Mersin, TÜRKİYE</h4>
+                    <p>• React.js Framework ve kütüphaneleri • Yerleşik kripto para takip firması web sitesi ve birçok bilgilendirici ve borsaya özel web sitesi • Organik arama motoru optimizasyonu, yüksek düzeyde rekabetçi, yüksek trafikli, hedefli anahtar kelime öbekleri • Tüm yaşam döngüsü barındırma geliştirme ve bakımından yalnızca sorumluydu • Tüm web sitesi tasarımında Photoshop, XHTML ve CSS kullanıldı</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">PHP</span>
+                  <span class="tag">JAVASCRIPT</span>
+                  <span class="tag">HTML & CSS</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>04/2022 —  07/2022</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="#">
+                    <h3>Web Tasarımcı</h3>
+                    <h4>Feka Reklam, Kurumsal Website, Akdeniz, Mersin, TÜRKİYE</h4>
+                    <p>• Kurumsal Grup şirketi web sitesi ve portföy yönetimi • Tüm yaşam döngüsü web sitesi geliştirme ve bakımından yalnızca sorumluydu • Tüm web sitesi tasarımında Photoshop, XHTML ve CSS kullanıldı • Tüm istemci tarafı komut dosyası oluşturma için JavaScript kullanıldı  • Tüm sunucu tarafı programlama için Veritabanı Sunucusu ve MSSQL'e bağlı ASP, MVC ve Core kullanıldı • Windows Sunucularındaki IIS üzerinde Apache de dahil olmak üzere Web ve FTP sunucularının yönetiminden sorumludur</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">PHP</span>
+                  <span class="tag">JAVASCRIPT</span>
+                  <span class="tag">HTML & CSS</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>03/2022 —  04/2022</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="https://atayapimimarlik.gen.tr/">
+                    <h3>WordPress Geliştirici</h3>
+                    <h4>Ata Yapı Mimarlık, Kurumsal Website, Yenişehir, Mersin, TÜRKİYE</h4>
+                    <p>• HTML5, CSS3, JavaScript, jQuery gibi ön uç teknolojileri kullanma • Web siteleri ve/veya web uygulamaları için kullanıcı arayüzleri oluşturma • Duyarlı tasarım web siteleri geliştirmek • Site hızlandırma, Hata ayıklama araçları • Platformlar ve tarayıcılar arasında tutarlı stil sağlamak için CSS değişiklikleri • Arka uç geliştirme için güçlü PHP ve MySQL • Özel Wordpress temaları oluşturma • Çok dilli WordPress web siteleri</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">WORDPRESS</span>
+                  <span class="tag">GUTENBERG BLOCKS</span>
+                  <span class="tag">NODEJS</span>
+                  <span class="tag">PHP</span>
+                  <span class="tag">HTML & CSS</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>11/2019 —  01/2020</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="https://www.saatciogullari.com/">
+                    <h3>E-Ticaret Web Portalı Yöneticisi</h3>
+                    <h4>Saatçioğulları Optik Market, Website, Yenişehir, Mersin, TÜRKİYE </h4>
+                    <p>• OpenCart modülü kullanıcı yönetimi  • Web sitesi dijital pazarlamasına uygun başlık tasarımları oluşturma • PHP projesinin kurulumundan yayınlanmasına kadar çalışmalar yürüttüm • Yönetim panelinin modüllerle birlikte kullanılması.</p>
+                  </a>
+                </section>
+                <section style={{ flexDirection: 'row', }}>
+                  <span class="tag">OPENCART</span>
+                  <span class="tag">MYSQL</span>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>08/2019 —  11/2019</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+            {/* PROJECT */}
+            <div className="component" style={{ padding: '0% 0%', }}>
+
+              <div className="col-md">
+
+                <section>
+                  <a href="#">
+                    <h3>Kullanıcı Arayüzü Tasarımcısı</h3>
+                    <h4>Sözler Ülkesi, Android-app, BT, Program, Yenişehir, Mersin, TÜRKİYE</h4>
+                    <p>• Uygulamanın gelişmiş devremülklerine uygun tasarımlar yayınladı • Kullanıcının uygulamada gezinirken istediği bilgi ve hedeflere ulaşmasını sağladı • Arama motoru optimizasyonu (SEO) ve marka hizmetlerine ilişkin fikirler için danışıldı • Photoshop kullanarak kullanıcı arayüzü tasarımı. • Grafik tasarım aşamasında animasyonlar, logolar, bannerlar, infografikler, arayüz butonları gibi araçlar tasarlandı.</p>
+                  </a>
+                </section>
+
+              </div>
+              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
+
+                <section>
+                  <ul>
+                    <li>
+                      <u>03/2019 —  08/2019</u>
+                    </li>
+                  </ul>
+                </section>
+
+              </div>
+
+            </div>
+            {/* PROJECT */}
+
+
+
+
+
+
+
+
 
 
           </div>
@@ -530,25 +789,76 @@
           link: 'projectdetail',
           submenu: [
             {
-              name: 'Proje 1',
+              name: 'Serem Metal',
               content: [
-                <h4>A small river named Duden flows by their place and supplies it with the necessary regelialia.</h4>
+                <h4>Teknik yapıştırıcı gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler Çimento esaslı sıvalar, Seramik yapıştırıcıları, Seramik derz dolguları gibi kategorilere dahildir. Kullanıcıların yapıştırıcı malzeme gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
               ],
-              url: 'https://google.com',
+              date: [<small>Şub, 2025 Kurumsal</small>],
+              url: "https://seremmetal.com/",
             },
             {
-              name: 'Proje 2',
+              name: 'Ata Yapı Mimarlık',
               content: [
-                <h4>A small river named Duden flows by their place and supplies it with the necessary regelialia.</h4>
+                <h4>Mimarlık ve Mühendislik gibi alanlarda hizmet veren kurumsal firmanın websitesidir. Tanıtılan hizmetler mimarlık ve mühendislik hizmetleri gibi kategorilere dahildir. Kullanıcıların rahat yaşam gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
               ],
-              url: 'https://google.com',
+              date: [<small>Oca, 2025 Kurumsal</small>],
+              url: "https://atayapimimarlik.gen.tr/",
             },
             {
-              name: 'Proje 3',
+              name: 'Dijital Dershanem',
               content: [
-                <h4>A small river named Duden flows by their place and supplies it with the necessary regelialia.</h4>
+                <h4>Üniversite öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler ÖABT, KPSS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
               ],
-              url: 'https://google.com',
+              date: [<small>Ara, 2024 Çevrimiçi Eğitim Platformu</small>],
+              url: "#",
+            },
+            {
+              name: 'TUSDATA',
+              content: [
+                <h4>Tıp öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler TUS, DUS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Oca, 2024 Çevrimiçi Eğitim Platformu</small>],
+              url: "https://www.tusdata.com/",
+            },
+            {
+              name: 'Medyarella Creative',
+              content: [
+                <h4>Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi alanlarında reklamcılık yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Kas, 2023 Reklam</small>],
+              url: "https://www.aymucevher.com/",
+            },
+            {
+              name: 'E-Tail Market',
+              content: [
+                <h4>Dijital oyun kartı, Bilgisayar oyunları gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler tüm dijital ürünleri kategorilerini kapsamaktadır. Kullanıcıların dijital alanda eğlence gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Tem, 2023 E-Ticaret</small>],
+              url: "https://www.etail.com.tr/",
+            },
+            {
+              name: 'Coin Modules Kripto',
+              content: [
+                <h4>Kripto para gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler kripto para haberleri gibi kategorilere dahildir. Kullanıcıların çevrimiçi varlık gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Tem, 2022 E-Ticaret</small>],
+              url: "#",
+            },
+            {
+              name: 'Feka Reklam',
+              content: [
+                <h4>Reklam, Tabela, Ahşap Giydirme ve Mühendislik gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve mühendislik gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Nis, 2022 Kurumsal</small>],
+              url: "#",
+            },
+            {
+              name: 'Saatçioğulları Optik Market',
+              content: [
+                <h4>Optik gözlük, Saat gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler aksesuar koleksiyonları gibi kategorilere dahildir. Kullanıcıların aksesuar gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+              ],
+              date: [<small>Kas, 2019 E-Ticaret</small>],
+              url: "https://www.saatciogullari.com/",
             },
 
           ]
@@ -732,7 +1042,7 @@
                           <li>Giriş
                             <span>(8)</span>
                           </li>
-                          <li>Tecrübeler
+                          <li>Yetkinlikler
                             <span>(6)</span>
                           </li>
                           <li>Kişilik
@@ -758,13 +1068,19 @@
                       <section style={{ flexDirection: 'row', }}>
                         <span className="tag">NODEJS</span>
                         <span className="tag">REACTJS</span>
+                        <span className="tag">VUEJS</span>
+                        <span className="tag">TYPESCRIPT</span>
                         <span className="tag">TAILWIND</span>
                         <span className="tag">HTML & CSS</span>
                         <span className="tag">JAVASCRIPT</span>
                         <span className="tag">WORDPRESS</span>
                         <span className="tag">WORDPRESS PLUGIN</span>
                         <span className="tag">GUTENBERG BLOCKS</span>
+                        <span className="tag">OPENCART</span>
                         <span className="tag">PHP</span>
+                        <span className="tag">TWIG</span>
+                        <span className="tag">AJAX</span>
+                        <span className="tag">MYSQL</span>
                       </section>
                       <article>
                         <h3>Günün Sözü</h3>
