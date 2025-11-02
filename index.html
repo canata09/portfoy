@@ -1965,7 +1965,9 @@
                           <div className="mdc-card__action-buttons">
                             {/* FIX */}
                             {item.submenu && item.submenu.map((sub, idx) => (
-                              <button className="mdc-button mdc-card__action mdc-card__action--button" onClick={() => { handleClick(sub.name); }} key={idx}>Proje Ayrıntılarını Görüntüle →</button>
+                              <a href="#root" className="mdc-button mdc-card__action mdc-card__action--button" onClick={() => { handleClick(sub.name); }} key={idx}>
+                                <span className="mdc-button__label">Proje Ayrıntılarını Görüntüle →</span>
+                              </a>
                             ))}
                             {/* FIX */}
                           </div>
