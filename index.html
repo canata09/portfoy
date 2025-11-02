@@ -4,864 +4,1493 @@
 <head>
   <title>Can Ata - Web Geliştirici Portföy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./assets/icon/favicon-16x16.png" type="image/png" sizes="16x16">
-  <link rel="icon" href="./assets/icon/favicon-32x32.png" type="image/png" sizes="32x32">
-  <link rel="icon" href="./assets/icon/favicon-96x96.png" type="image/png" sizes="96x96">
-  <link rel="icon" href="./assets/icon/favicon-120x120.png" type="image/png" sizes="120x120">
+  <link rel="icon" href="./assets/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="./assets/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="./assets/icons/favicon-96x96.png" type="image/png" sizes="96x96">
+  <link rel="icon" href="./assets/icons/favicon-120x120.png" type="image/png" sizes="120x120">
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="App.css">
-  <link rel="stylesheet" href="Blogger.css">
-  <link rel="stylesheet" href="Prefab.css">
-  <link rel="stylesheet" href="Standard.css">
-  <link rel="stylesheet" href="Template.css">
-  <link rel="stylesheet" href="Table.css">
-  <link rel="stylesheet" href="Slider.css">
-  <!-- Slick Carousel CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+
+  <!-- Block Level CSS -->
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="assets/css/standard.css">
+  <link rel="stylesheet" href="assets/css/table.css">
+
+  <!-- Inline Level CSS -->
+  <link rel="stylesheet" href="assets/css/template.css">
+
   <!-- jQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <!-- Slick Carousel JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-  <link rel="stylesheet" href="helpers/helpers.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+  <style>
+
+  </style>
+
+  <!-- Optional: Roboto font (Material Design uses it by default) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+
+  <!-- MDC Typography -->
+  <link rel="stylesheet" href="https://unpkg.com/@material/typography/dist/mdc.typography.css">
+
+  <!-- Various Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+  <!-- MDC CSS -->
+  <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+
+  <!-- MDC JavaScript -->
+  <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+
 </head>
 
-<body>
-  <div id="root"></div>
-
-
-
-
-
-
+<body className="mdc-typography" id="root">
 
   <script type="text/babel">
     const { useState, useEffect } = React;
 
-    function Projeler({ activeSubmenu }) {
-      const [filteredNotifications, setFilteredNotifications] = useState([]);
-
-      // Sample notifications data
-      const bildirim = [
-        { id: 1, baslik: "Kurumsal Yönetim Paneli", description: "Serem Metal", url: "https://seremmetal.com/", content: "Teknik yapıştırıcı gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler Çimento esaslı sıvalar, Seramik yapıştırıcıları, Seramik derz dolguları gibi kategorilere dahildir. Kullanıcıların yapıştırıcı malzeme gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["PHP", "HTML & CSS", "MYSQL", "JAVASCRIPT", "AJAX"], image: "assets/img/31html.png" },
-        { id: 2, baslik: "WordPress Blok Eklenti", description: "Ata Yapı Mimarlık", url: "https://atayapimimarlik.gen.tr/", content: "Mimarlık ve Mühendislik gibi alanlarda hizmet veren kurumsal firmanın websitesidir. Tanıtılan hizmetler mimarlık ve mühendislik hizmetleri gibi kategorilere dahildir. Kullanıcıların rahat yaşam gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["WORDPRESS", "GUTENBERG BLOCKS", "NODEJS", "PHP", "HTML & CSS"], image: "assets/img/26html.png" },
-        { id: 3, baslik: "Kullanıcı Modülü Tasarımı", description: "Dijital Dershanem", url: "#", content: "Üniversite öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler ÖABT, KPSS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["NODEJS", "REACTJS", "TAILWIND"], image: "assets/img/22html.png" },
-        { id: 4, baslik: "WordPress Eklenti", description: "TUSDATA", url: "https://www.tusdata.com/", content: "Tıp öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler TUS, DUS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["WORDPRESS", "WORDPRESS PLUGIN", "PHP", "HTML & CSS"], image: "assets/img/18html.png" },
-        { id: 5, baslik: "WordPress Yönetim Paneli", description: "Medyarella Creative", url: "https://www.aymucevher.com/", content: "Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi alanlarında reklamcılık yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["WORDPRESS", "JAVASCRIPT", "HTML & CSS"], image: "assets/img/07html.png" },
-        { id: 6, baslik: "OpenCart Yönetim Paneli", description: "E-Tail Market", url: "https://www.etail.com.tr/", content: "Dijital oyun kartı, Bilgisayar oyunları gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler tüm dijital ürünleri kategorilerini kapsamaktadır. Kullanıcıların dijital alanda eğlence gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["OPENCART", "TWIG", "PHP", "JAVASCRIPT", "AJAX"], image: "assets/img/14html.png" },
-        { id: 7, baslik: "PHP Yönetim Paneli", description: "Coin Modules Kripto", url: "#", content: "Kripto para gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler kripto para haberleri gibi kategorilere dahildir. Kullanıcıların çevrimiçi varlık gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["PHP", "JAVASCRIPT", "HTML & CSS"], image: "assets/img/12html.png" },
-        { id: 8, baslik: "Firmalar Grubu Yönetim Paneli", description: "Feka Reklam", url: "#", content: "Reklam, Tabela, Ahşap Giydirme ve Mühendislik gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve mühendislik gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["PHP", "JAVASCRIPT", "HTML & CSS"], image: "assets/img/11html.png" },
-        { id: 9, baslik: "OpenCart Ürün Yönetimi", description: "Saatçioğulları Optik Market", url: "https://www.saatciogullari.com/", content: "Optik gözlük, Saat gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler aksesuar koleksiyonları gibi kategorilere dahildir. Kullanıcıların aksesuar gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.  ", tags: ["OPENCART", "MYSQL"], image: "assets/img/00html.png" },
-      ];
-
-      // Filter the notifications when activeSubmenu changes
-      useEffect(() => {
-        if (activeSubmenu && activeSubmenu.length > 0) {
-          // Get the submenu name
-          const submenuName = activeSubmenu[0]?.name;
-
-          // Filter the bildirim array based on the submenu name
-          const filtered = bildirim.filter(b => b.baslik === submenuName);
-
-          // Set the filtered notifications
-          setFilteredNotifications(filtered);
-        }
-      }, [activeSubmenu]);
-
-      useEffect(() => {
-        if (window.$) {
-          $('.carousel').slick({
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1
-          });
-        }
-      }, []);
-
+    const Projeler = ({ activeSubmenu }) => {
       return (
-        <main className="middledoc" >
-
-          <div className="modules" >
-
-
-            <div className="left" style={{ float: 'left', }}>
-
-
-
-
-              <div className="container" >
-
-                <div className="component" >
-
-                  <div className="row">
-
-
-                    {filteredNotifications.length > 0 ? (
-                      filteredNotifications.map((notification, index) => (
-                        <article key={notification.id}>
-                          <h1>{notification.description}</h1>
-                        </article>
-                      ))
-                    ) : (
-                      <article>No informations found</article>
-                    )}
-
-                  </div>
-                  <div className="row">
-                    <div className="slider-container">
-                      <div className="carousel">
-                        {filteredNotifications.map((notification) => (
-                          <div key={notification.id}>
-                            <img src={notification.image} alt={`{notification.baslik}`} />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-              <div className="container" >
-
-                <div className="component" >
-
-                  <div className="row">
-
-                    {filteredNotifications.length > 0 ? (
-                      filteredNotifications.map(notification => (
-                        <>
-                          <article key={notification.id}>
-                            <p>{notification.content}</p>
-                          </article>
-                          <section style={{ flexDirection: 'row', }}>
-                            {notification.tags.map((tag, index) => (
-                              <span key={index}>{tag}</span>
-                            ))}
-                          </section>
-                        </>
-                      ))
-                    ) : (
-                      <article>No informations found</article>
-                    )}
-
-
-                  </div>
-
-
-
-
-                  <div className="row">
-
-
-                    {filteredNotifications.length > 0 ? (
-                      filteredNotifications.map(notification => (
-                        <>
-                          <section key={notification.id}>
-                            <a href={notification.url}>
-
-                              <div style={{ marginBottom: '20px', width: '100%', textAlign: 'left' }}>
-                                <ul style={{ listStyleType: 'none', padding: '0', margin: '0', width: '100%' }}>
-                                  <li
-                                    style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f9f9f9', marginBottom: '10px', padding: '10px 15px' }}>
-                                    <img src="assets/icon/headshot.jpg" alt="Article Image" style={{ width: '100px', borderRadius: '4px' }} />
-                                    <div style={{ marginLeft: '15px', marginBottom: '15px', width: '100%' }}>
-                                      <h4 style={{ fontSize: '14px', margin: '10px 0' }}>Can Ata</h4>
-                                      <p style={{ color: '#999', fontSize: '12px' }}>Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
-                                    </div>
-                                  </li>
-                                </ul>
-                              </div>
-
-                            </a>
-                          </section>
-                        </>
-                      ))
-                    ) : (
-                      <article>No informations found</article>
-                    )}
-
-
-
-                  </div>
-
-
-
-
-
-
-
-                </div>
-              </div>
-
-
-
-
-
-
-            </div>
-            <div className="right" style={{ float: 'left', backgroundColor: '#f8f9fa', }}>
-
-              <section>
-                <h3>Makaleler</h3>
-                <ul>
-                  <li>Giriş
-                    <span>(8)</span>
-                  </li>
-                  <li>Yetkinlikler
-                    <span>(6)</span>
-                  </li>
-                  <li>Kişilik
-                    <span>(2)</span>
-                  </li>
-                </ul>
-              </section>
-              <div style={{ marginBottom: '20px', width: '100%', textAlign: 'left' }}>
-                <ul style={{ listStyleType: 'none', padding: '0', margin: '0', width: '100%' }}>
-                  <li>
-                    <a href="./can-ata.pdf" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f9f9f9', marginBottom: '10px', padding: '10px 15px' }}>
-                      <img src="assets/icon/pdf.png" alt="Article Image" style={{ width: '100px', borderRadius: '4px' }} />
-                      <div style={{ marginLeft: '15px', marginBottom: '15px', width: '100%' }}>
-                        <p style={{ color: '#999', fontSize: '12px' }}>2025</p>
-                        <h4 style={{ fontSize: '14px', margin: '10px 0' }}>Tam Özgeçmişi Görüntüle</h4>
-                      </div>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f9f9f9', marginBottom: '10px', padding: '10px 15px' }}>
-                      <img src="assets/icon/office.png" alt="Article Image" style={{ width: '100px', borderRadius: '4px' }} />
-                      <div style={{ marginLeft: '15px', marginBottom: '15px', width: '100%' }}>
-                        <p style={{ color: '#999', fontSize: '12px' }}>2025</p>
-                        <h4 style={{ fontSize: '14px', margin: '10px 0' }}>Tam Proje Arşivini Görüntüle</h4>
-                      </div>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <section>
-                <h3>Etiket Bulutu</h3>
-              </section>
-              <section style={{ flexDirection: 'row', }}>
-                <span className="tag">NODEJS</span>
-                <span className="tag">REACTJS</span>
-                <span className="tag">VUEJS</span>
-                <span className="tag">TYPESCRIPT</span>
-                <span className="tag">TAILWIND</span>
-                <span className="tag">HTML & CSS</span>
-                <span className="tag">JAVASCRIPT</span>
-                <span className="tag">WORDPRESS</span>
-                <span className="tag">WORDPRESS PLUGIN</span>
-                <span className="tag">GUTENBERG BLOCKS</span>
-                <span className="tag">OPENCART</span>
-                <span className="tag">PHP</span>
-                <span className="tag">TWIG</span>
-                <span className="tag">AJAX</span>
-                <span className="tag">MYSQL</span>
-              </section>
-              <section>
-                <h3>Konular</h3>
-                <ul>
-                  <li>Ağ protokolleri / Sunucu / Veritabanı / CSS3 / Frontend teknolojileri, NodeJS, ES6, JavaScript, React.js, Vue.js, TypeScript, PHP, HTML5 / Render işleme teknikleri / WordPress, OpenCart Eklenti geliştirme bilgisi / API kullanımı, jQuery, JSON ve XML veri manipülasyonu / Kimlik Doğrulama protokolleri kurulumu / SEO / Sürüm kontrolü kullanımı / Web grafik tasarımı / İngilizce Dili / Sözlü Yazılı</li>
-                </ul>
-              </section>
-
-
-
-            </div>
-
-
-
-
-
-
-
-
-
-          </div>
-
-
-
-
-
-        </main>
+        <div>
+          {activeSubmenu && (
+            <ul>
+              {activeSubmenu.map((subitem, index) => (
+                <li key={index}>{subitem}</li>
+              ))}
+            </ul>
+          )}
+        </div>
       );
     };
 
-    function Experience() {
+    function Yetkinlikler() {
       return (
-        <main className="middledoc">
+        <div className="mdc-layout-grid full-width-grid">
+          <div className="mdc-layout-grid__inner">
+
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-9-desktop" >
 
 
+              <div className="mdc-layout-grid full-width-grid">
+                <div className="mdc-layout-grid__inner">
 
+                  <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <div className="exprow mdc-card" >
+                      <div className="mdc-card__primary-action" >
+                        <div className="demo-card__primary">
+                          <h6 className="mdc-typography--headline6">Frontend Geliştirici Takım Lideri</h6>
+                          <div className="mdc-typography--subtitle2">ERHA Eğitim Basın Yayın Bilgisayar Ltd. Şti, Ankara, TÜRKİYE</div>
 
-          <div className="container-fluid" >
+                          <p className="mdc-typography--body2">• Öğrenme yönetim sistemi ile Üniversite sınavlarına bir web sitede hazırlayan canlı video kursu. İşlenen konular arasında ÖABT, KPSS Ders konuları ve daha fazlası yer alıyor • ES6, NodeJS, React.js, TypeScript, PostgreSQL Veritabanı, CSS3, API kullanımı, jQuery, JSON, ve XML veri manipülasyonu, Kimlik Doğrulama protokolleri kurulumu, Sürüm Kontrolü, Web grafik tasarım</p>
+                        </div>
+                      </div>
+                      <div className="mdc-card__actions">
+                        <button className="mdc-button mdc-card__action mdc-card__action--button" >NODEJS</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">REACTJS</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">TAILWIND</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <div className="exprow mdc-card" >
+                      <div className="mdc-card__primary-action" >
+                        <div className="demo-card__primary">
+                          <h6 className="mdc-typography--headline6">İnternet Geliştirici</h6>
+                          <div className="mdc-typography--subtitle2">TUSDATA Tus Sınav Hazırlık Merkezi, Ankara, TÜRKİYE</div>
 
+                          <p className="mdc-typography--body2">• Öğrenme yönetim sistemi ile Tıp sınavlarına bir web sitede hazırlayan canlı video kursu. İşlenen konular arasında TUS, DUS Ders konuları ve daha fazlası yer alıyor • PHP, WordPress, MySQL Veritabanı, Navicat database, CSS3, WordPress Eklenti geliştirme, API kullanımı, jQuery, JSON, ve XML veri manipülasyonu, SEO, Sürüm Kontrolü, Web grafik tasarım</p>
+                          <a href="https://www.tusdata.com" className="mdc-button mdc-button--text" style={{ marginLeft: '8px', }} >
+                            <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div className="mdc-card__actions">
+                        <button className="mdc-button mdc-card__action mdc-card__action--button" >WORDPRESS</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">WORDPRESS PLUGIN</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">PHP</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">HTML & CSS</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <div className="exprow mdc-card" >
+                      <div className="mdc-card__primary-action" >
+                        <div className="demo-card__primary">
+                          <h6 className="mdc-typography--headline6">WordPress Geliştirici</h6>
+                          <div className="mdc-typography--subtitle2">Medyarella Creative Reklam Ajansı, Ankara, TÜRKİYE</div>
 
-            {/* PROJECT */}
-            <div className="component" style={{ paddingLeft: '15%', paddingTop: '0', paddingBottom: '0' }}>
+                          <p className="mdc-typography--body2">• Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi hizmeti almak için web sitesi. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir • Cpanel, plesk panel, paylaşımlı ve WHM hosting, Domain, DNS, Mail Server konuları, WordPress, MySQL Veritabanı, CSS3, Frontend teknolojileri, NodeJS, React.js, WordPress Eklenti geliştirme, SEO, Sürüm Kontrolü, Web grafik tasarım</p>
+                          <a href="https://medyarella.com.tr/" className="mdc-button mdc-button--text" style={{ marginLeft: '8px', }} >
+                            <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div className="mdc-card__actions">
+                        <button className="mdc-button mdc-card__action mdc-card__action--button" >WORDPRESS</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">JAVASCRIPT</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">HTML & CSS</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <div className="exprow mdc-card" >
+                      <div className="mdc-card__primary-action" >
+                        <div className="demo-card__primary">
+                          <h6 className="mdc-typography--headline6">Bilgisayar Programcısı</h6>
+                          <div className="mdc-typography--subtitle2">5Deniz Ltd, Oyun Kodu, Hediye Kartı ve Epin Satış Platformu, Ankara, TÜRKİYE</div>
 
-              <div id="mention" className="col-md">
+                          <p className="mdc-typography--body2">• Dijital Oyun Kodları, Hediye Kartları ve Epin ürünleri bir web sitede satışı yapılan e-ticaret platformudur. Satılan ürün kategorileri arasında Steam, Xbox, PSN, Roblox, Pubg Uc, Valorant VP, Lol RP ve daha fazlası yer alıyor • ES6, NodeJS, Vue.js, TypeScript, PHP, OpenCart, X-Fee Pro Shipping Eklenti geliştirme, PayPal Global Seçenek İşleri, API kullanımı, jQuery, JSON, ve XML veri manipülasyonu, Kimlik Doğrulama protokolleri kurulumu, SEO, Sürüm Kontrolü, Web grafik tasarım</p>
+                          <a href="https://www.etail.com.tr/" className="mdc-button mdc-button--text" style={{ marginLeft: '8px', }} >
+                            <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div className="mdc-card__actions">
+                        <button className="mdc-button mdc-card__action mdc-card__action--button" >OPENCART</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">TWIG</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">PHP</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">JAVASCRIPT</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">AJAX</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <div className="exprow mdc-card" >
+                      <div className="mdc-card__primary-action" >
+                        <div className="demo-card__primary">
+                          <h6 className="mdc-typography--headline6">Web Geliştirici</h6>
+                          <div className="mdc-typography--subtitle2">Coin Modules, Kripto Paralar, Akdeniz, Mersin, TÜRKİYE</div>
 
-                <section>
-                  <a href="#">
-                    <h2>Frontend Geliştirici Takım Lideri</h2>
-                    <h3>Frontend Geliştirici </h3>
-                    <h4>ERHA Eğitim Basın Yayın Bilgisayar Ltd. Şti, Ankara, TÜRKİYE</h4>
-                    <p>• Öğrenme yönetim sistemi ile Üniversite sınavlarına bir web sitede hazırlayan canlı video kursu. İşlenen konular arasında ÖABT, KPSS Ders konuları ve daha fazlası yer alıyor • ES6, NodeJS, React.js, TypeScript, PostgreSQL Veritabanı, CSS3, API kullanımı, jQuery, JSON, ve XML veri manipülasyonu, Kimlik Doğrulama protokolleri kurulumu, Sürüm Kontrolü, Web grafik tasarım</p>
-                  </a>
-                </section>
-                <section style={{ flexDirection: 'row', }}>
-                  <span class="tag">NODEJS</span>
-                  <span class="tag">REACTJS</span>
-                  <span class="tag">TAILWIND</span>
-                </section>
+                          <p className="mdc-typography--body2">• Kripto para satın almak için web sitesi. Kullanıcıların çevrimiçi varlık gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. Tanıtılan hizmetler kripto para haberleri gibi kategorilere dahildir • React.js, Frontend teknolojileri, React.js, SEO, Web grafik tasarım</p>
+                        </div>
+                      </div>
+                      <div className="mdc-card__actions">
+                        <button className="mdc-button mdc-card__action mdc-card__action--button" >PHP</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">JAVASCRIPT</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">HTML & CSS</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <div className="exprow mdc-card" >
+                      <div className="mdc-card__primary-action" >
+                        <div className="demo-card__primary">
+                          <h6 className="mdc-typography--headline6">Web Tasarımcı</h6>
+                          <div className="mdc-typography--subtitle2">Feka Reklam, Kurumsal Website, Akdeniz, Mersin, TÜRKİYE</div>
 
+                          <p className="mdc-typography--body2">• Reklam, Tabela, Ahşap Giydirme ve Mühendislik hizmeti almak için web sitesi. Kullanıcıların tanıtım ve mühendislik gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir • Windows Sunucu, MSSQL Veritabanı, CSS3, SEO, Web grafik tasarım</p>
+                        </div>
+                      </div>
+                      <div className="mdc-card__actions">
+                        <button className="mdc-button mdc-card__action mdc-card__action--button" >PHP</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">JAVASCRIPT</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">HTML & CSS</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <div className="exprow mdc-card" >
+                      <div className="mdc-card__primary-action" >
+                        <div className="demo-card__primary">
+                          <h6 className="mdc-typography--headline6">WordPress Geliştirici</h6>
+                          <div className="mdc-typography--subtitle2">Ata Yapı Mimarlık, Kurumsal Website, Yenişehir, Mersin, TÜRKİYE</div>
+
+                          <p className="mdc-typography--body2">• Mimarlık ve Mühendislik hizmeti almak için web sitesi. Kullanıcıların rahat yaşam gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. Tanıtılan hizmetler mimarlık ve mühendislik hizmetleri gibi kategorilere dahildir • NodeJS, MySQL Veritabanı, CSS3, Frontend teknolojileri, ES6, JavaScript, React.js, WordPress Blok Eklenti geliştirme, SEO, Web grafik tasarım</p>
+                          <a href="https://atayapimimarlik.gen.tr/" className="mdc-button mdc-button--text" style={{ marginLeft: '8px', }} >
+                            <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div className="mdc-card__actions">
+                        <button className="mdc-button mdc-card__action mdc-card__action--button" >WORDPRESS</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">GUTENBERG BLOCKS</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">NODEJS</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">PHP</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">HTML & CSS</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <div className="exprow mdc-card" >
+                      <div className="mdc-card__primary-action" >
+                        <div className="demo-card__primary">
+                          <h6 className="mdc-typography--headline6">Toplam Ürün Desteği (TPS) Geliştirici</h6>
+                          <div className="mdc-typography--subtitle2">Saatçioğulları Optik Market, Website, Yenişehir, Mersin, TÜRKİYE</div>
+
+                          <p className="mdc-typography--body2">• Kadın & Erkek Kol Saatleri ve Güneş Gözlüklerinin bir web sitede satışı yapılan e-ticaret platformudur. Satılan ürün kategorileri arasında aksesuar koleksiyonları ve daha fazlası yer alıyor • PHP, OpenCart</p>
+                          <a href="https://www.saatciogullari.com/" className="mdc-button mdc-button--text" style={{ marginLeft: '8px', }} >
+                            <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                          </a>
+                        </div>
+                      </div>
+                      <div className="mdc-card__actions">
+                        <button className="mdc-button mdc-card__action mdc-card__action--button" >OPENCART</button>
+                        <button className="mdc-button mdc-card__action mdc-card__action--button">MYSQL</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <div className="exprow mdc-card" >
+                      <div className="mdc-card__primary-action" >
+                        <div className="demo-card__primary">
+                          <h6 className="mdc-typography--headline6">Kullanıcı Arayüzü Tasarımcısı</h6>
+                          <div className="mdc-typography--subtitle2">Sözler Ülkesi, Android-app, BT, Program, Yenişehir, Mersin, TÜRKİYE</div>
+
+                          <p className="mdc-typography--body2">• Günlük içerik paylaşımı ile Edebi yönümüzü bir web sitede yaşatan günün sözü haberleri. Yazılan sözler konular arasında günlük hayatta en trend olmuş sözler ve daha fazlası yer alıyor • SEO, Web grafik tasarım</p>
+                        </div>
+                      </div>
+                      <div className="mdc-card__actions">
+
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
               </div>
-              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', padding: '4% 0%' }}>
 
-                <section>
-                  <ul>
-                    {/* 
-                <li><u>2024 —
-                    <span>(HALEN)</span></u>
-                </li>
-                */}
-                    <li>
-                      <u>04/2024 —  12/2024</u>
-                    </li>
-                  </ul>
-                </section>
 
-              </div>
 
             </div>
-            {/* PROJECT */}
-            <div className="component" style={{ paddingLeft: '15%', paddingTop: '0', paddingBottom: '0' }}>
+            <div className="three column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-2-desktop" >
 
-              <div id="mention" className="col-md">
+              <section style={{ paddingTop: '24px', }}>
+                <div className="expdate mdc-card demo-card demo-ui-control" style={{ width: '100%', height: '300px', padding: '24px', }}>
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row'}}>
+                      <div className="demo-card__primary">
+                      <h2 className="demo-card__title mdc-typography mdc-typography--headline6">12/2024</h2>
+                      <h3 className="demo-card__subtitle mdc-typography mdc-typography--subtitle2"> —  04/2024</h3>
+                      </div>
+                  </div>
+                  <div className="mdc-card__actions">
 
-                <section>
-                  <a href="https://www.tusdata.com">
-                    <h3>İnternet Geliştirici</h3>
-                    <h4>TUSDATA Tus Sınav Hazırlık Merkezi, Ankara, TÜRKİYE</h4>
-                    <p>• Öğrenme yönetim sistemi ile Tıp sınavlarına bir web sitede hazırlayan canlı video kursu. İşlenen konular arasında TUS, DUS Ders konuları ve daha fazlası yer alıyor • PHP, WordPress, MySQL Veritabanı, Navicat database, CSS3, WordPress Eklenti geliştirme, API kullanımı, jQuery, JSON, ve XML veri manipülasyonu, SEO, Sürüm Kontrolü, Web grafik tasarım</p>
-                  </a>
-                </section>
-                <section style={{ flexDirection: 'row', }}>
-                  <span class="tag">WORDPRESS</span>
-                  <span class="tag">WORDPRESS PLUGIN</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">HTML & CSS</span>
-                </section>
+                  </div>
+                </div>
+              </section>
+              <section style={{ paddingTop: '24px', }}>
+                <div className="expdate mdc-card demo-card demo-ui-control" style={{ width: '100%', height: '300px', padding: '24px', }}>
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row'}}>
+                      <div className="demo-card__primary">
+                      <h2 className="demo-card__title mdc-typography mdc-typography--headline6">01/2024</h2>
+                      <h3 className="demo-card__subtitle mdc-typography mdc-typography--subtitle2"> —  11/2023</h3>
+                      </div>
+                  </div>
+                  <div className="mdc-card__actions">
 
-              </div>
-              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', padding: '4% 0%' }}>
+                  </div>
+                </div>
+              </section>
+              <section style={{ paddingTop: '24px', }}>
+                <div className="expdate mdc-card demo-card demo-ui-control" style={{ width: '100%', height: '300px', padding: '24px', }}>
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row'}}>
+                      <div className="demo-card__primary">
+                      <h2 className="demo-card__title mdc-typography mdc-typography--headline6">11/2023</h2>
+                      <h3 className="demo-card__subtitle mdc-typography mdc-typography--subtitle2"> —  09/2023</h3>
+                      </div>
+                  </div>
+                  <div className="mdc-card__actions">
 
-                <section>
-                  <ul>
-                    <li>
-                      <u>11/2023 —  01/2024</u>
-                    </li>
-                  </ul>
-                </section>
+                  </div>
+                </div>
+              </section>
+              <section style={{ paddingTop: '24px', }}>
+                <div className="expdate mdc-card demo-card demo-ui-control" style={{ width: '100%', height: '300px', padding: '24px', }}>
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row'}}>
+                      <div className="demo-card__primary">
+                      <h2 className="demo-card__title mdc-typography mdc-typography--headline6">07/2023</h2>
+                      <h3 className="demo-card__subtitle mdc-typography mdc-typography--subtitle2"> —  04/2023</h3>
+                      </div>
+                  </div>
+                  <div className="mdc-card__actions">
 
-              </div>
+                  </div>
+                </div>
+              </section>
+              <section style={{ paddingTop: '24px', }}>
+                <div className="expdate mdc-card demo-card demo-ui-control" style={{ width: '100%', height: '300px', padding: '24px', }}>
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row'}}>
+                      <div className="demo-card__primary">
+                      <h2 className="demo-card__title mdc-typography mdc-typography--headline6">07/2022</h2>
+                      <h3 className="demo-card__subtitle mdc-typography mdc-typography--subtitle2"> —  04/2022</h3>
+                      </div>
+                  </div>
+                  <div className="mdc-card__actions">
 
-            </div>
-            {/* PROJECT */}
-            {/* PROJECT */}
-            <div className="component" style={{ paddingLeft: '15%', paddingTop: '0', paddingBottom: '0' }}>
+                  </div>
+                </div>
+              </section>
+              <section style={{ paddingTop: '24px', }}>
+                <div className="expdate mdc-card demo-card demo-ui-control" style={{ width: '100%', height: '300px', padding: '24px', }}>
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row'}}>
+                      <div className="demo-card__primary">
+                      <h2 className="demo-card__title mdc-typography mdc-typography--headline6">04/2022</h2>
+                      <h3 className="demo-card__subtitle mdc-typography mdc-typography--subtitle2"> —  03/2022</h3>
+                      </div>
+                  </div>
+                  <div className="mdc-card__actions">
 
-              <div id="mention" className="col-md">
+                  </div>
+                </div>
+              </section>
+              <section style={{ paddingTop: '24px', }}>
+                <div className="expdate mdc-card demo-card demo-ui-control" style={{ width: '100%', height: '300px', padding: '24px', }}>
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row'}}>
+                      <div className="demo-card__primary">
+                      <h2 className="demo-card__title mdc-typography mdc-typography--headline6">01/2020</h2>
+                      <h3 className="demo-card__subtitle mdc-typography mdc-typography--subtitle2"> —  11/2019</h3>
+                      </div>
+                  </div>
+                  <div className="mdc-card__actions">
 
-                <section>
-                  <a href="https://medyarella.com.tr/">
-                    <h3>WordPress Geliştirici</h3>
-                    <h4>Medyarella Creative Reklam Ajansı, Ankara, TÜRKİYE</h4>
-                    <p>• Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi hizmeti almak için web sitesi. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir • Cpanel, plesk panel, paylaşımlı ve WHM hosting, Domain, DNS, Mail Server konuları, WordPress, MySQL Veritabanı, CSS3, Frontend teknolojileri, NodeJS, React.js, WordPress Eklenti geliştirme, SEO, Sürüm Kontrolü, Web grafik tasarım</p>
-                  </a>
-                </section>
-                <section style={{ flexDirection: 'row', }}>
-                  <span class="tag">WORDPRESS</span>
-                  <span class="tag">JAVASCRIPT</span>
-                  <span class="tag">HTML & CSS</span>
-                </section>
+                  </div>
+                </div>
+              </section>
+              <section style={{ paddingTop: '24px', }}>
+                <div className="expdate mdc-card demo-card demo-ui-control" style={{ width: '100%', height: '300px', padding: '24px', }}>
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row'}}>
+                      <div className="demo-card__primary">
+                      <h2 className="demo-card__title mdc-typography mdc-typography--headline6">11/2019</h2>
+                      <h3 className="demo-card__subtitle mdc-typography mdc-typography--subtitle2"> —  08/2019</h3>
+                      </div>
+                  </div>
+                  <div className="mdc-card__actions">
 
-              </div>
-              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', padding: '4% 0%' }}>
+                  </div>
+                </div>
+              </section>
+              <section style={{ paddingTop: '24px', }}>
+                <div className="expdate mdc-card demo-card demo-ui-control" style={{ width: '100%', height: '300px', padding: '24px', }}>
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row'}}>
+                      <div className="demo-card__primary">
+                      <h2 className="demo-card__title mdc-typography mdc-typography--headline6">08/2019</h2>
+                      <h3 className="demo-card__subtitle mdc-typography mdc-typography--subtitle2"> —  03/2019</h3>
+                      </div>
+                  </div>
+                  <div className="mdc-card__actions">
 
-                <section>
-                  <ul>
-                    <li>
-                      <u>09/2023 —  11/2023</u>
-                    </li>
-                  </ul>
-                </section>
-
-              </div>
-
-            </div>
-            {/* PROJECT */}
-            {/* PROJECT */}
-            <div className="component" style={{ paddingLeft: '15%', paddingTop: '0', paddingBottom: '0' }}>
-
-              <div id="mention" className="col-md">
-
-                <section>
-                  <a href="https://www.etail.com.tr/">
-                    <h3>Bilgisayar Programcısı</h3>
-                    <h4>5Deniz Ltd, Oyun Kodu, Hediye Kartı ve Epin Satış Platformu, Ankara, TÜRKİYE</h4>
-                    <p>• Dijital Oyun Kodları, Hediye Kartları ve Epin ürünleri bir web sitede satışı yapılan e-ticaret platformudur. Satılan ürün kategorileri arasında Steam, Xbox, PSN, Roblox, Pubg Uc, Valorant VP, Lol RP ve daha fazlası yer alıyor • ES6, NodeJS, Vue.js, TypeScript, PHP, OpenCart, X-Fee Pro Shipping Eklenti geliştirme, PayPal Global Seçenek İşleri, API kullanımı, jQuery, JSON, ve XML veri manipülasyonu, Kimlik Doğrulama protokolleri kurulumu, SEO, Sürüm Kontrolü, Web grafik tasarım</p>
-                  </a>
-                </section>
-                <section style={{ flexDirection: 'row', }}>
-                  <span class="tag">OPENCART</span>
-                  <span class="tag">TWIG</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">JAVASCRIPT</span>
-                  <span class="tag">AJAX</span>
-
-                </section>
-
-              </div>
-              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', padding: '4% 0%' }}>
-
-                <section>
-                  <ul>
-                    <li>
-                      <u>04/2023 —  07/2023</u>
-                    </li>
-                  </ul>
-                </section>
-
-              </div>
-
-            </div>
-            {/* PROJECT */}
-            {/* PROJECT */}
-            <div className="component" style={{ paddingLeft: '15%', paddingTop: '0', paddingBottom: '0' }}>
-
-              <div id="mention" className="col-md">
-
-                <section>
-                  <a href="#">
-                    <h3>Web Geliştirici</h3>
-                    <h4>Coin Modules, Kripto Paralar, Akdeniz, Mersin, TÜRKİYE</h4>
-                    <p>• Kripto para satın almak için web sitesi. Kullanıcıların çevrimiçi varlık gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. Tanıtılan hizmetler kripto para haberleri gibi kategorilere dahildir • React.js, Frontend teknolojileri, React.js, SEO, Web grafik tasarım</p>
-                  </a>
-                </section>
-                <section style={{ flexDirection: 'row', }}>
-                  <span class="tag">PHP</span>
-                  <span class="tag">JAVASCRIPT</span>
-                  <span class="tag">HTML & CSS</span>
-                </section>
-
-              </div>
-              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', padding: '4% 0%' }}>
-
-                <section>
-                  <ul>
-                    <li>
-                      <u>04/2022 —  07/2022</u>
-                    </li>
-                  </ul>
-                </section>
-
-              </div>
+                  </div>
+                </div>
+              </section>
 
             </div>
-            {/* PROJECT */}
-            {/* PROJECT */}
-            <div className="component" style={{ paddingLeft: '15%', paddingTop: '0', paddingBottom: '0' }}>
-
-              <div id="mention" className="col-md">
-
-                <section>
-                  <a href="#">
-                    <h3>Web Tasarımcı</h3>
-                    <h4>Feka Reklam, Kurumsal Website, Akdeniz, Mersin, TÜRKİYE</h4>
-                    <p>• Reklam, Tabela, Ahşap Giydirme ve Mühendislik hizmeti almak için web sitesi. Kullanıcıların tanıtım ve mühendislik gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir • Windows Sunucu, MSSQL Veritabanı, CSS3, SEO, Web grafik tasarım</p>
-                  </a>
-                </section>
-                <section style={{ flexDirection: 'row', }}>
-                  <span class="tag">PHP</span>
-                  <span class="tag">JAVASCRIPT</span>
-                  <span class="tag">HTML & CSS</span>
-                </section>
-
-              </div>
-              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', padding: '4% 0%' }}>
-
-                <section>
-                  <ul>
-                    <li>
-                      <u>03/2022 —  04/2022</u>
-                    </li>
-                  </ul>
-                </section>
-
-              </div>
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
 
             </div>
-            {/* PROJECT */}
-            {/* PROJECT */}
-            <div className="component" style={{ paddingLeft: '15%', paddingTop: '0', paddingBottom: '0' }}>
-
-              <div id="mention" className="col-md">
-
-                <section>
-                  <a href="https://atayapimimarlik.gen.tr/">
-                    <h3>WordPress Geliştirici</h3>
-                    <h4>Ata Yapı Mimarlık, Kurumsal Website, Yenişehir, Mersin, TÜRKİYE</h4>
-                    <p>• Mimarlık ve Mühendislik hizmeti almak için web sitesi. Kullanıcıların rahat yaşam gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. Tanıtılan hizmetler mimarlık ve mühendislik hizmetleri gibi kategorilere dahildir • NodeJS, MySQL Veritabanı, CSS3, Frontend teknolojileri, ES6, JavaScript, React.js, WordPress Blok Eklenti geliştirme, SEO, Web grafik tasarım</p>
-                  </a>
-                </section>
-                <section style={{ flexDirection: 'row', }}>
-                  <span class="tag">WORDPRESS</span>
-                  <span class="tag">GUTENBERG BLOCKS</span>
-                  <span class="tag">NODEJS</span>
-                  <span class="tag">PHP</span>
-                  <span class="tag">HTML & CSS</span>
-                </section>
-
-              </div>
-              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', padding: '4% 0%' }}>
-
-                <section>
-                  <ul>
-                    <li>
-                      <u>11/2019 —  01/2020</u>
-                    </li>
-                  </ul>
-                </section>
-
-              </div>
-
-            </div>
-            {/* PROJECT */}
-            {/* PROJECT */}
-            <div className="component" style={{ paddingLeft: '15%', paddingTop: '0', paddingBottom: '0' }}>
-
-              <div id="mention" className="col-md">
-
-                <section>
-                  <a href="https://www.saatciogullari.com/">
-                    <h3>Toplam Ürün Desteği (TPS) Geliştirici</h3>
-                    <h4>Saatçioğulları Optik Market, Website, Yenişehir, Mersin, TÜRKİYE </h4>
-                    <p>• Kadın & Erkek Kol Saatleri ve Güneş Gözlüklerinin bir web sitede satışı yapılan e-ticaret platformudur. Satılan ürün kategorileri arasında aksesuar koleksiyonları ve daha fazlası yer alıyor • PHP, OpenCart</p>
-                  </a>
-                </section>
-                <section style={{ flexDirection: 'row', }}>
-                  <span class="tag">OPENCART</span>
-                  <span class="tag">MYSQL</span>
-                </section>
-
-              </div>
-              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', padding: '4% 0%' }}>
-
-                <section>
-                  <ul>
-                    <li>
-                      <u>08/2019 —  11/2019</u>
-                    </li>
-                  </ul>
-                </section>
-
-              </div>
-
-            </div>
-            {/* PROJECT */}
-            {/* PROJECT */}
-            <div className="component" style={{ paddingLeft: '15%', paddingTop: '0', paddingBottom: '0' }}>
-
-              <div id="mention" className="col-md">
-
-                <section>
-                  <a href="#">
-                    <h3>Kullanıcı Arayüzü Tasarımcısı</h3>
-                    <h4>Sözler Ülkesi, Android-app, BT, Program, Yenişehir, Mersin, TÜRKİYE</h4>
-                    <p>• Günlük içerik paylaşımı ile Edebi yönümüzü bir web sitede yaşatan günün sözü haberleri. Yazılan sözler konular arasında günlük hayatta en trend olmuş sözler ve daha fazlası yer alıyor • SEO, Web grafik tasarım</p>
-                  </a>
-                </section>
-
-              </div>
-              <div className="col-xs" style={{ backgroundColor: '#f8f9fa', margin: '0% 4%', padding: '4% 0%' }}>
-
-                <section>
-                  <ul>
-                    <li>
-                      <u>03/2019 —  08/2019</u>
-                    </li>
-                  </ul>
-                </section>
-
-              </div>
-
-            </div>
-            {/* PROJECT */}
-
-
-
-
-
-
-
-
-
 
           </div>
-
-
-
-
-        </main>
+        </div>
       );
     };
 
-    function About() {
+    function KurumsalYonetimPaneli() {
       return (
-        <main className="middledoc" >
+        <div className="mdc-layout-grid full-width-grid">
+          <div className="mdc-layout-grid__inner">
 
+            <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
 
-          <div className="container" >
+              <section className="mdc-typography typography-section"  >
+                <h4 className="mdc-typography--headline4">Serem Metal</h4>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <ul className="mdc-image-list my-image-list">
+                    <li className="mdc-image-list__item">
+                        <div className="mdc-image-list__image-aspect-container">
+                            <img className="mdc-image-list__image" src="assets/img/31html.png" />
+                        </div>
+                    </li>
+                </ul>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-typography--subtitle1">Teknik yapıştırıcı gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler Çimento esaslı sıvalar, Seramik yapıştırıcıları, Seramik derz dolguları gibi kategorilere dahildir. Kullanıcıların yapıştırıcı malzeme gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="expdate mdc-card demo-card demo-card-shaped">
+                    <div className="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded" tabindex="0">
 
-            <div className="component">
+                    </div>
+                    <div className="mdc-card__actions">
+                        <div className="mdc-card__action-buttons">
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>PHP
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>HTML & CSS
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>MYSQL
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>JAVASCRIPT
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>AJAX
+                          </button>
+                        </div>
+                    </div>
+                </div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', backgroundColor: '#f8f9fa', }} >
 
-              <div className="row" style={{ textAlign: 'center' }} >
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row', }} >
+                    <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ width: '10%', backgroundImage: 'url("assets/icons/headshot.jpg")'}} ></div>
+                    <div className="demo-card__primary">
+                      <h3 className="mdc-typography--headline6" >
+                        Can Ata
+                      </h3>
+                      <p className="mdc-typography--body2" >Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
+                    </div>
+                  </div>
+                  <div className="mdc-card__actions">
+                    <div className="mdc-card__action-icons">
 
-                <h3 style={{ color: '#1eafed', fontSize: '27px', fontWeight: '900', fontFamily: 'Poppins, sans-serif', }} >Can Ata</h3>
+                    </div>
+                    <div className="mdc-card__action-buttons">
+                      <a href="https://seremmetal.com/" className="mdc-button mdc-button--text" >
+                        <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                      </a>
+                    </div>
+                  </div>
 
-              </div>
+                </div>
+              </section>
+
+            </div>
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
 
             </div>
 
           </div>
+        </div>
+      );
+    };
 
-          <div className="container" >
+    function WordpressBlokEklenti() {
+      return (
+        <div className="mdc-layout-grid full-width-grid">
+          <div className="mdc-layout-grid__inner">
 
-            <div className="component">
+            <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
 
-              <div className="col-sm" style={{ textAlign: 'left' }} >
+              <section className="mdc-typography typography-section"  >
+                <h4 className="mdc-typography--headline4">Ata Yapı Mimarlık</h4>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <ul className="mdc-image-list my-image-list">
+                    <li className="mdc-image-list__item">
+                        <div className="mdc-image-list__image-aspect-container">
+                            <img className="mdc-image-list__image" src="assets/img/26html.png" />
+                        </div>
+                    </li>
+                </ul>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-typography--subtitle1">Mimarlık ve Mühendislik gibi alanlarda hizmet veren kurumsal firmanın websitesidir. Tanıtılan hizmetler mimarlık ve mühendislik hizmetleri gibi kategorilere dahildir. Kullanıcıların rahat yaşam gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="expdate mdc-card demo-card demo-card-shaped">
+                    <div className="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded" tabindex="0">
 
-                <h3 style={{ fontWeight: '600', fontFamily: 'Poppins, sans-serif', }} >ReactJS Geliştirici, Frontend Geliştirici, NodeJS Geliştirici, Javascript Geliştirici, Php Geliştirici</h3>
+                    </div>
+                    <div className="mdc-card__actions">
+                        <div className="mdc-card__action-buttons">
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>WORDPRESS
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>GUTENBERG BLOCKS
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>NODEJS
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>PHP
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>HTML & CSS
+                          </button>
+                        </div>
+                    </div>
+                </div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', backgroundColor: '#f8f9fa', }} >
 
-              </div>
-              <div className="col-md">
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row', }} >
+                    <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ width: '10%', backgroundImage: 'url("assets/icons/headshot.jpg")'}} ></div>
+                    <div className="demo-card__primary">
+                      <h3 className="mdc-typography--headline6" >
+                        Can Ata
+                      </h3>
+                      <p className="mdc-typography--body2" >Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
+                    </div>
+                  </div>
+                  <div className="mdc-card__actions">
+                    <div className="mdc-card__action-icons">
 
-                <img src="assets/icon/profile.jpg" alt="Article Image" style={{ width: '100%', objectFit: 'scale-down' }} />
+                    </div>
+                    <div className="mdc-card__action-buttons">
+                      <a href="https://www.atayapimimarlik.gen.tr" className="mdc-button mdc-button--text" >
+                        <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                      </a>
+                    </div>
+                  </div>
 
-              </div>
+                </div>
+              </section>
+
+            </div>
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
 
             </div>
 
           </div>
+        </div>
+      );
+    };
 
-          <div className="container" >
+    function KullaniciModuluTasarimi() {
+      return (
+        <div className="mdc-layout-grid full-width-grid">
+          <div className="mdc-layout-grid__inner">
 
-            <div className="component">
+            <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
 
-              <div className="row" style={{ textAlign: 'left' }} >
+              <section className="mdc-typography typography-section"  >
+                <h4 className="mdc-typography--headline4">Dijital Dershanem</h4>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <ul className="mdc-image-list my-image-list">
+                    <li className="mdc-image-list__item">
+                        <div className="mdc-image-list__image-aspect-container">
+                            <img className="mdc-image-list__image" src="assets/img/22html.png" />
+                        </div>
+                    </li>
+                </ul>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-typography--subtitle1">Üniversite öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler ÖABT, KPSS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="expdate mdc-card demo-card demo-card-shaped">
+                    <div className="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded" tabindex="0">
 
-                <p>Kullanıcı odaklı düşünme becerisini tamamlarken; her ekran boyutuna uygun ızgara sistemini oluşturup, modern web geliştirme sürecinde temel bir adımlarından olan her ekran boyutuna uygun ızgara sistemini oluşturarak, "Duyarlı tasarım ilkelerini" tamamlayacak teknik yeterliliğe sahip bir yazılımcı olarak bu prensiplere dikkat etmek, kullanıcı deneyimini tüm cihazlarda tutarlı kılarken; mizanpaj içerisindeki içeriklerin "Arayüz Sistemi Kuralları" gibi detaylarının özenle ele almak, tasarımın okunabilirliğini ve estetik dengesini güçlendirir. </p>
+                    </div>
+                    <div className="mdc-card__actions">
+                        <div className="mdc-card__action-buttons">
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>NODEJS
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>REACTJS
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>TAILWIND
+                          </button>
+                        </div>
+                    </div>
+                </div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', backgroundColor: '#f8f9fa', }} >
 
-              </div>
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row', }} >
+                    <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ width: '10%', backgroundImage: 'url("assets/icons/headshot.jpg")'}} ></div>
+                    <div className="demo-card__primary">
+                      <h3 className="mdc-typography--headline6" >
+                        Can Ata
+                      </h3>
+                      <p className="mdc-typography--body2" >Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
+                    </div>
+                  </div>
+                  <div className="mdc-card__actions">
+                    <div className="mdc-card__action-icons">
+
+                    </div>
+                    <div className="mdc-card__action-buttons">
+
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+            </div>
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
 
             </div>
 
           </div>
+        </div>
+      );
+    };
 
-          <div className="container" >
+    function WordpressEklenti() {
+      return (
+        <div className="mdc-layout-grid full-width-grid">
+          <div className="mdc-layout-grid__inner">
 
-            <div className="component">
+            <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
 
-              <div className="row" style={{ textAlign: 'center' }} >
+              <section className="mdc-typography typography-section"  >
+                <h4 className="mdc-typography--headline4">TUSDATA Tus & Dus Sınavları Hazırlık Merkezi</h4>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <ul className="mdc-image-list my-image-list">
+                    <li className="mdc-image-list__item">
+                        <div className="mdc-image-list__image-aspect-container">
+                            <img className="mdc-image-list__image" src="assets/img/18html.png" />
+                        </div>
+                    </li>
+                </ul>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-typography--subtitle1">Tıp öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler TUS, DUS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="expdate mdc-card demo-card demo-card-shaped">
+                    <div className="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded" tabindex="0">
 
-                <blockquote>
-                  <p>Özel yapım UI/UX tasarımları ile kullanıcı deneyimi odaklı web bileşenlerini kodlama ve tasarımı</p>
-                </blockquote>
+                    </div>
+                    <div className="mdc-card__actions">
+                        <div className="mdc-card__action-buttons">
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>WORDPRESS
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>WORDPRESS PLUGIN
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>PHP
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>HTML & CSS
+                          </button>
+                        </div>
+                    </div>
+                </div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', backgroundColor: '#f8f9fa', }} >
 
-              </div>
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row', }} >
+                    <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ width: '10%', backgroundImage: 'url("assets/icons/headshot.jpg")'}} ></div>
+                    <div className="demo-card__primary">
+                      <h3 className="mdc-typography--headline6" >
+                        Can Ata
+                      </h3>
+                      <p className="mdc-typography--body2" >Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
+                    </div>
+                  </div>
+                  <div className="mdc-card__actions">
+                    <div className="mdc-card__action-icons">
 
-              <div className="row">
+                    </div>
+                    <div className="mdc-card__action-buttons">
+                      <a href="https://www.tusdata.com/" className="mdc-button mdc-button--text" >
+                        <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                      </a>
+                    </div>
+                  </div>
 
-                <section className="rose-intro">
-                  <p>DNS, Server, Hosting, HTTP, MySQL, PostgreSQL, CSS3, Bootstrap, Tailwind CSS, NodeJS, ES6, JavaScript, React.js, Redux, Vue.js, TypeScript, PHP, HTML5, Regex, jQuery, JSON, XML, Auth, JWT, SEO, GitHub Version Control System, Web Design, Figma, Prototype</p>
-                  <a href="#awards" className="scroll">Bilgisayar Yetkinlikleri</a>
+                </div>
+              </section>
+
+            </div>
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
+            </div>
+
+          </div>
+        </div>
+      );
+    };
+
+    function WordpressTema() {
+      return (
+        <div className="mdc-layout-grid full-width-grid">
+          <div className="mdc-layout-grid__inner">
+
+            <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
+
+              <section className="mdc-typography typography-section"  >
+                <h4 className="mdc-typography--headline4">Ay Mücevher</h4>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <ul className="mdc-image-list my-image-list">
+                    <li className="mdc-image-list__item">
+                        <div className="mdc-image-list__image-aspect-container">
+                            <img className="mdc-image-list__image" src="assets/img/07html.png" />
+                        </div>
+                    </li>
+                </ul>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-typography--subtitle1">Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi alanlarında reklamcılık yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="expdate mdc-card demo-card demo-card-shaped">
+                    <div className="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded" tabindex="0">
+
+                    </div>
+                    <div className="mdc-card__actions">
+                        <div className="mdc-card__action-buttons">
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>WORDPRESS
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>JAVASCRIPT
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>HTML & CSS
+                          </button>
+                        </div>
+                    </div>
+                </div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', backgroundColor: '#f8f9fa', }} >
+
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row', }} >
+                    <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ width: '10%', backgroundImage: 'url("assets/icons/headshot.jpg")'}} ></div>
+                    <div className="demo-card__primary">
+                      <h3 className="mdc-typography--headline6" >
+                        Can Ata
+                      </h3>
+                      <p className="mdc-typography--body2" >Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
+                    </div>
+                  </div>
+                  <div className="mdc-card__actions">
+                    <div className="mdc-card__action-icons">
+
+                    </div>
+                    <div className="mdc-card__action-buttons">
+                      <a href="https://www.aymucevher.com/" className="mdc-button mdc-button--text" >
+                        <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+            </div>
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
+            </div>
+
+          </div>
+        </div>
+      );
+    };
+
+    function WordpressHizOptimizasyonu() {
+      return (
+        <div className="mdc-layout-grid full-width-grid">
+          <div className="mdc-layout-grid__inner">
+
+            <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
+
+              <section className="mdc-typography typography-section"  >
+                <h4 className="mdc-typography--headline4">Marin Spa</h4>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <ul className="mdc-image-list my-image-list">
+                    <li className="mdc-image-list__item">
+                        <div className="mdc-image-list__image-aspect-container">
+                            <img className="mdc-image-list__image" src="assets/img/08html.png" />
+                        </div>
+                    </li>
+                </ul>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-typography--subtitle1">Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi alanlarında reklamcılık yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="expdate mdc-card demo-card demo-card-shaped">
+                    <div className="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded" tabindex="0">
+
+                    </div>
+                    <div className="mdc-card__actions">
+                        <div className="mdc-card__action-buttons">
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>WORDPRESS
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>JAVASCRIPT
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>HTML & CSS
+                          </button>
+                        </div>
+                    </div>
+                </div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', backgroundColor: '#f8f9fa', }} >
+
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row', }} >
+                    <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ width: '10%', backgroundImage: 'url("assets/icons/headshot.jpg")'}} ></div>
+                    <div className="demo-card__primary">
+                      <h3 className="mdc-typography--headline6" >
+                        Can Ata
+                      </h3>
+                      <p className="mdc-typography--body2" >Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
+                    </div>
+                  </div>
+                  <div className="mdc-card__actions">
+                    <div className="mdc-card__action-icons">
+
+                    </div>
+                    <div className="mdc-card__action-buttons">
+                      <a href="https://marinspa.com.tr/" className="mdc-button mdc-button--text" >
+                        <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+            </div>
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
+            </div>
+
+          </div>
+        </div>
+      );
+    };
+
+    function OpencartYonetimPaneli() {
+      return (
+        <div className="mdc-layout-grid full-width-grid">
+          <div className="mdc-layout-grid__inner">
+
+            <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
+
+              <section className="mdc-typography typography-section"  >
+                <h4 className="mdc-typography--headline4">E-Tail Market</h4>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <ul className="mdc-image-list my-image-list">
+                    <li className="mdc-image-list__item">
+                        <div className="mdc-image-list__image-aspect-container">
+                            <img className="mdc-image-list__image" src="assets/img/14html.png" />
+                        </div>
+                    </li>
+                </ul>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-typography--subtitle1">Dijital oyun kartı, Bilgisayar oyunları gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler tüm dijital ürünleri kategorilerini kapsamaktadır. Kullanıcıların dijital alanda eğlence gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="expdate mdc-card demo-card demo-card-shaped">
+                    <div className="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded" tabindex="0">
+
+                    </div>
+                    <div className="mdc-card__actions">
+                        <div className="mdc-card__action-buttons">
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>OPENCART
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>TWIG
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>PHP
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>JAVASCRIPT
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>AJAX
+                          </button>
+                        </div>
+                    </div>
+                </div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', backgroundColor: '#f8f9fa', }} >
+
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row', }} >
+                    <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ width: '10%', backgroundImage: 'url("assets/icons/headshot.jpg")'}} ></div>
+                    <div className="demo-card__primary">
+                      <h3 className="mdc-typography--headline6" >
+                        Can Ata
+                      </h3>
+                      <p className="mdc-typography--body2" >Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
+                    </div>
+                  </div>
+                  <div className="mdc-card__actions">
+                    <div className="mdc-card__action-icons">
+
+                    </div>
+                    <div className="mdc-card__action-buttons">
+                      <a href="https://www.etail.com.tr/" className="mdc-button mdc-button--text" >
+                        <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+            </div>
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
+            </div>
+
+          </div>
+        </div>
+      );
+    };
+
+    function PhpYonetimPaneli() {
+      return (
+        <div className="mdc-layout-grid full-width-grid">
+          <div className="mdc-layout-grid__inner">
+
+            <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
+
+              <section className="mdc-typography typography-section"  >
+                <h4 className="mdc-typography--headline4">Coin Modules Kripto</h4>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <ul className="mdc-image-list my-image-list">
+                    <li className="mdc-image-list__item">
+                        <div className="mdc-image-list__image-aspect-container">
+                            <img className="mdc-image-list__image" src="assets/img/31html.png" />
+                        </div>
+                    </li>
+                </ul>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-typography--subtitle1">Kripto para gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler kripto para haberleri gibi kategorilere dahildir. Kullanıcıların çevrimiçi varlık gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="expdate mdc-card demo-card demo-card-shaped">
+                    <div className="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded" tabindex="0">
+
+                    </div>
+                    <div className="mdc-card__actions">
+                        <div className="mdc-card__action-buttons">
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>PHP
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>JAVASCRIPT
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>HTML & CSS
+                          </button>
+                        </div>
+                    </div>
+                </div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', backgroundColor: '#f8f9fa', }} >
+
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row', }} >
+                    <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ width: '10%', backgroundImage: 'url("assets/icons/headshot.jpg")'}} ></div>
+                    <div className="demo-card__primary">
+                      <h3 className="mdc-typography--headline6" >
+                        Can Ata
+                      </h3>
+                      <p className="mdc-typography--body2" >Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
+                    </div>
+                  </div>
+                  <div className="mdc-card__actions">
+                    <div className="mdc-card__action-icons">
+
+                    </div>
+                    <div className="mdc-card__action-buttons">
+
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+            </div>
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
+            </div>
+
+          </div>
+        </div>
+      );
+    };
+
+    function FirmalarGrubuYonetimPaneli() {
+      return (
+        <div className="mdc-layout-grid full-width-grid">
+          <div className="mdc-layout-grid__inner">
+
+            <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
+
+              <section className="mdc-typography typography-section"  >
+                <h4 className="mdc-typography--headline4">Feka Reklam</h4>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <ul className="mdc-image-list my-image-list">
+                    <li className="mdc-image-list__item">
+                        <div className="mdc-image-list__image-aspect-container">
+                            <img className="mdc-image-list__image" src="assets/img/11html.png" />
+                        </div>
+                    </li>
+                </ul>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-typography--subtitle1">Reklam, Tabela, Ahşap Giydirme ve Mühendislik gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve mühendislik gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="expdate mdc-card demo-card demo-card-shaped">
+                    <div className="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded" tabindex="0">
+
+                    </div>
+                    <div className="mdc-card__actions">
+                        <div className="mdc-card__action-buttons">
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>PHP
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>JAVASCRIPT
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>HTML & CSS
+                          </button>
+                        </div>
+                    </div>
+                </div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', backgroundColor: '#f8f9fa', }} >
+
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row', }} >
+                    <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ width: '10%', backgroundImage: 'url("assets/icons/headshot.jpg")'}} ></div>
+                    <div className="demo-card__primary">
+                      <h3 className="mdc-typography--headline6" >
+                        Can Ata
+                      </h3>
+                      <p className="mdc-typography--body2" >Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
+                    </div>
+                  </div>
+                  <div className="mdc-card__actions">
+                    <div className="mdc-card__action-icons">
+
+                    </div>
+                    <div className="mdc-card__action-buttons">
+
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+            </div>
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
+            </div>
+
+          </div>
+        </div>
+      );
+    };
+
+    function OpencartUrunYonetimi() {
+      return (
+        <div className="mdc-layout-grid full-width-grid">
+          <div className="mdc-layout-grid__inner">
+
+            <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
+
+              <section className="mdc-typography typography-section"  >
+                <h4 className="mdc-typography--headline4">Saatçioğulları Optik Market</h4>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <ul className="mdc-image-list my-image-list">
+                    <li className="mdc-image-list__item">
+                        <div className="mdc-image-list__image-aspect-container">
+                            <img className="mdc-image-list__image" src="assets/img/00html.png" />
+                        </div>
+                    </li>
+                </ul>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-typography--subtitle1">Optik gözlük, Saat gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler aksesuar koleksiyonları gibi kategorilere dahildir. Kullanıcıların aksesuar gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="expdate mdc-card demo-card demo-card-shaped">
+                    <div className="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded" tabindex="0">
+
+                    </div>
+                    <div className="mdc-card__actions">
+                        <div className="mdc-card__action-buttons">
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>OPENCART
+                          </button>
+                          <button className="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button mdc-ripple-upgraded">
+                            <span className="mdc-button__ripple"></span>MYSQL
+                          </button>
+                        </div>
+                    </div>
+                </div>
+              </section>
+              <section className="mdc-typography typography-section"  >
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', backgroundColor: '#f8f9fa', }} >
+
+                  <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row', }} >
+                    <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ width: '10%', backgroundImage: 'url("assets/icons/headshot.jpg")'}} ></div>
+                    <div className="demo-card__primary">
+                      <h3 className="mdc-typography--headline6" >
+                        Can Ata
+                      </h3>
+                      <p className="mdc-typography--body2" >Projeyi daha yakından keşfetmek için bağlantıya tıklayın. Proje sürecini ve detaylarını görmek için sizi yönlendirecek linki takip edin. Farklı bakış açıları ve ek bilgiler için projeyi incelemeye devam edin.</p>
+                    </div>
+                  </div>
+                  <div className="mdc-card__actions">
+                    <div className="mdc-card__action-icons">
+
+                    </div>
+                    <div className="mdc-card__action-buttons">
+                      <a href="https://www.saatciogullari.com/" className="mdc-button mdc-button--text" >
+                        <span className="mdc-button__label">Proje Sayfasını Görüntüle →</span>
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+            </div>
+            <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
+            </div>
+
+          </div>
+        </div>
+      );
+    };
+    
+    function Hakkimda() {
+      return (
+        <>
+          <div className="mdc-layout-grid full-width-grid">
+            <div className="mdc-layout-grid__inner">
+
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-6-desktop"  >
+
+                <section className="mdc-typography typography-section"  >
+                  <h5 className="mdc-typography--headline5">Kullanıcı odaklı düşünme becerisini tamamlarken; her ekran boyutuna uygun ızgara sistemini oluşturup, modern web geliştirme sürecinde temel bir adımlarından olan her ekran boyutuna uygun ızgara sistemini oluşturarak, "Duyarlı tasarım ilkelerini" tamamlayacak teknik yeterliliğe sahip bir yazılımcı olarak bu prensiplere dikkat etmek, kullanıcı deneyimini tüm cihazlarda tutarlı kılarken; mizanpaj içerisindeki içeriklerin "Arayüz Sistemi Kuralları" gibi detaylarının özenle ele almak, tasarımın okunabilirliğini ve estetik dengesini güçlendirir.</h5>
                 </section>
 
               </div>
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-5-desktop"  >
 
-            </div>
+                <ul className="mdc-image-list my-image-list">
+                    <li className="mdc-image-list__item">
+                        <div className="mdc-image-list__image-aspect-container">
+                            <img className="mdc-image-list__image" src="assets/icons/profile.jpg" />
+                        </div>
+                    </li>
+                </ul>
 
-          </div>
-
-          <div className="container" >
-
-            <div className="component">
-
-              <div className="row" style={{ textAlign: 'left' }} >
-
-                <h3>Sertifikalar</h3>
+              </div>
+              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
 
               </div>
 
-              <div className="col-sm">
+            </div>
+          </div>
+          <div className="mdc-layout-grid full-width-grid">
+            <div className="mdc-layout-grid__inner">
 
-                <section className="awards" id="awards">
-                  <ul>
-                    <li>2022 – Frontend React Javascript Kursu Tamamlama Sertifikası | Yıldız Teknik Üniversitesi Sürekli Eğitim Merkezi</li>
-                    <li>2023 – Php Sertifikası - Google Developer Launchpad | ProgrammingHub</li>
-                    <li>2021 – Python Başarı Sertifikası | MIMO Başarı Sertifikası | 01.12.2021</li>
-                    <li>...</li>
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
+
+                <section className="mdc-typography typography-section"  >
+                  <ul className="mdc-list demo-list mdc-list--two-line mdc-list--avatar-list">
+                      <li className="mdc-list-item mdc-ripple-upgraded" tabindex="0"
+                          id="eca2f472-1cd6-43ee-adeb-87d88283cea1"><span className="mdc-list-item__graphic material-icons"
+                              aria-hidden="true">folder</span><span className="mdc-list-item__text"><span
+                                  className="mdc-list-item__primary-text">Can ATA</span><span
+                                  className="mdc-list-item__secondary-text">ReactJS Geliştirici, Frontend Geliştirici, NodeJS Geliştirici, Javascript Geliştirici, Php Geliştirici</span></span>
+                      </li>
                   </ul>
                 </section>
+                <section className="mdc-typography typography-section"  >
+                  <div className="expdate mdc-card" >
+                      <div className="mdc-card__primary-action" tabindex="0">
+                          <h4 className="mdc-typography--subtitle2">Kullanıcı Arayüzü Tasarımı</h4>
+                          <p className="mdc-typography--body2">Özel Yapım Web Bileşenleri Tasarımı</p>
+                      </div>
+                      <div className="mdc-card__actions">
+                          <button className="mdc-button mdc-card__action mdc-card__action--button">Kullanıcı Deneyimi</button>
+                      </div>
+                  </div>
+                </section>
+                <section className="mdc-typography typography-section"  >
+                    <div className="mdc-card demo-card demo-card-shaped">
+                        <div className="mdc-card__primary-action demo-card__primary-action mdc-ripple-upgraded"
+                            tabindex="0">
+                            <div className="demo-card__secondary mdc-typography mdc-typography--body2">DNS, Server, Hosting, HTTP, MySQL, PostgreSQL, CSS3, Bootstrap, Tailwind CSS, NodeJS, ES6, JavaScript, React.js, Redux, Vue.js, TypeScript, PHP, HTML5, Regex, jQuery, JSON, XML, Auth, JWT, SEO, GitHub Version Control System, Web Design, Figma, Prototype</div>
+                        </div>
+                        <div className="mdc-card__actions">
+                            <div className="mdc-card__action-buttons">
+                              <button
+                                    className="mdc-button mdc-card__action mdc-card__action--button mdc-ripple-upgraded"><span
+                                        className="mdc-button__ripple"></span>Bilgisayar Yetkinlikleri</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
 
               </div>
-              <div className="col-md">
-
-                <section className="awards" id="awards">
-                  <ul>
-                    <li>2025 – CEFR A2 Elementary seviyesi İngilizce Dil Temel Becerileri | BritishCouncil EnglishScore Uluslararası Kültürel İlişkiler ve Eğitim Fırsatları Kuruluşu | 26.03.2025</li>
-                    <li>2022 – Arama Motoru Optimizasyonu Sertifikası - Google Developer Launchpad | ProgrammingHub</li>
-                    <li>2022 – Bilgisayar Ağı Sertifikası - Google Developer Launchpad | ProgrammingHub</li>
-                    <li>...</li>
-                  </ul>
-                </section>
+              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
 
               </div>
 
             </div>
-
           </div>
+          <div className="mdc-layout-grid full-width-grid">
+            <div className="mdc-layout-grid__inner">
 
-          <div className="container">
-            <div className="component" style={{ paddingRight: '15%', paddingTop: '0', paddingBottom: '0' }}>
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
 
-              <div className="row">
+                <section className="mdc-typography typography-section"  >
+                  <h4 className="mdc-typography--headline4">Sertifikalar</h4>
+                </section>
 
-                <div className="social-box">
-                  <div className="social-title">Sosyal profiller</div>
-                  <div className="icons">
-                    <a href="https://github.com/canata09"><i className="fab fa-github"></i></a>
-                    <a href="https://www.behance.net/canata3"><i className="fab fa-behance"></i></a>
-                    <a href="https://www.linkedin.com/in/canataweb"><i className="fab fa-linkedin-in"></i></a>
+              </div>
+              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
+              </div>
+
+            </div>
+          </div>
+          <div className="mdc-layout-grid full-width-grid">
+            <div className="mdc-layout-grid__inner">
+
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-6-desktop"  >
+
+                <section className="mdc-typography typography-section" style={{ marginBottom: '32px', }}>
+                    <ul className="mdc-list demo-list mdc-list--two-line">
+                        <li className="mdc-list-item mdc-ripple-upgraded" tabindex="0" style={{ marginBottom: '32px', }}
+                            id="17f9622b-eeed-4995-805c-dbdc0098c398"><span className="mdc-list-item__text"><span
+                                    className="mdc-list-item__primary-text">2022 – Frontend React Javascript Kursu Tamamlama Sertifikası</span><span
+                                    className="mdc-list-item__secondary-text">Yıldız Teknik Üniversitesi Sürekli Eğitim Merkezi</span></span></li>
+                        <li className="mdc-list-item mdc-ripple-upgraded" style={{ marginBottom: '32px', }} id="6f45f161-ff57-4f44-85e7-313826bf8d12"
+                            tabindex="-1"><span className="mdc-list-item__text"><span className="mdc-list-item__primary-text">2023 – Php Sertifikası
+                                    </span><span className="mdc-list-item__secondary-text">Google Developer Launchpad | ProgrammingHub</span></span></li>
+                        <li className="mdc-list-item mdc-ripple-upgraded" style={{ marginBottom: '32px', }} id="11b3b099-b1a1-4ad5-91ab-25a46c315438"
+                            tabindex="-1"><span className="mdc-list-item__text"><span className="mdc-list-item__primary-text">2021 – Python Başarı Sertifikası
+                                    </span><span className="mdc-list-item__secondary-text">MIMO Başarı Sertifikası</span></span></li>
+                    </ul>
+                </section>
+
+              </div>
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-5-desktop"  >
+
+                <section className="mdc-typography typography-section" style={{ marginBottom: '32px', }}>
+                    <ul className="mdc-list demo-list mdc-list--two-line">
+                        <li className="mdc-list-item mdc-ripple-upgraded" tabindex="0" style={{ marginBottom: '32px', }}
+                            id="17f9622b-eeed-4995-805c-dbdc0098c398"><span className="mdc-list-item__text"><span
+                                    className="mdc-list-item__primary-text">2025 – CEFR A2 Elementary seviyesi İngilizce Dil Temel Becerileri</span><span
+                                    className="mdc-list-item__secondary-text">BritishCouncil EnglishScore Uluslararası Kültürel İlişkiler ve Eğitim Fırsatları Kuruluşu</span></span></li>
+                        <li className="mdc-list-item mdc-ripple-upgraded" style={{ marginBottom: '32px', }} id="6f45f161-ff57-4f44-85e7-313826bf8d12"
+                            tabindex="-1"><span className="mdc-list-item__text"><span className="mdc-list-item__primary-text">2022 – Arama Motoru Optimizasyonu Sertifikası
+                                    </span><span className="mdc-list-item__secondary-text">Google Developer Launchpad | ProgrammingHub</span></span></li>
+                        <li className="mdc-list-item mdc-ripple-upgraded" style={{ marginBottom: '32px', }} id="11b3b099-b1a1-4ad5-91ab-25a46c315438"
+                            tabindex="-1"><span className="mdc-list-item__text"><span className="mdc-list-item__primary-text">2022 – Bilgisayar Ağı Sertifikası
+                                    </span><span className="mdc-list-item__secondary-text">Google Developer Launchpad | ProgrammingHub</span></span></li>
+                    </ul>
+                </section>
+
+              </div>
+              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
+              </div>
+
+            </div>
+          </div>
+          <div className="mdc-layout-grid full-width-grid">
+            <div className="mdc-layout-grid__inner">
+
+              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
+
+
+
+
+                <div className="call-to-action mdc-card demo-card">
+                    <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+                        <div className="demo-card__primary">
+                            <h2 className="demo-card__title mdc-typography mdc-typography--headline6">Sosyal Profiller</h2>
+                        </div>
+                    </div>
+                    <div className="mdc-card__actions">
+                        <div className="mdc-card__action-icons">
+                            <div className="mdc-chip-set">
+                                <div className="mdc-chip mdc-ripple-upgraded" role="row" id="mdc-chip-19">
+                                  <i className="material-icons mdc-chip__icon mdc-chip__icon--leading mdc-chip__icon--leading">hub</i>
+                                  <a href="https://github.com/canata09" className="demo-card__title mdc-typography mdc-typography--headline6" >
+                                    <span role="button" tabindex="0" className="mdc-chip__text">GitHub</span>
+                                  </a>
+                                </div>
+                                <div className="mdc-chip mdc-ripple-upgraded" role="row" id="mdc-chip-20">
+                                  <i className="material-icons mdc-chip__icon mdc-chip__icon--leading mdc-chip__icon--leading">desk</i>
+                                  <a href="https://www.behance.net/canata3" className="demo-card__title mdc-typography mdc-typography--headline6" >
+                                    <span role="button" tabindex="0" className="mdc-chip__text">Behance</span>
+                                  </a>
+                                </div>
+                                <div className="mdc-chip mdc-ripple-upgraded" role="row" id="mdc-chip-21">
+                                  <i className="material-icons mdc-chip__icon mdc-chip__icon--leading mdc-chip__icon--leading">directions</i>
+                                  <a href="https://www.linkedin.com/in/canataweb" className="demo-card__title mdc-typography mdc-typography--headline6" >
+                                    <span role="button" tabindex="0" className="mdc-chip__text">LinkedIn</span>
+                                  </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+              </div>
+              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
+              </div>
+
+            </div>
+          </div>
+        </>
+      );
+    };
+
+    function Iletisim() {
+      return (
+        <>
+          <div className="mdc-layout-grid full-width-grid">
+            <div className="mdc-layout-grid__inner">
+
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-11-desktop"  >
+
+                <section className="mdc-typography typography-section"  >
+                  <h4 className="mdc-typography--headline4">İletişim Bilgileri</h4>
+                </section>
+
+              </div>
+              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
+              </div>
+
+            </div>
+          </div>
+          <div className="mdc-layout-grid full-width-grid">
+            <div className="mdc-layout-grid__inner">
+
+
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-3-desktop" >
+
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', }} >
+                  <div className="mdc-card__primary-action" tabindex="0">
+                    <h2 className="mdc-typography--headline6">Adres:</h2>
+                    <p>Yenişehir / MERSİN 33110 TÜRKİYE</p>
                   </div>
                 </div>
 
               </div>
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-3-desktop" >
 
-
-
-            </div>
-
-          </div>
-
-
-        </main>
-      );
-    };
-
-    function Contact() {
-
-      return (
-        <main className="middledoc">
-
-          <div className="container" >
-
-            <div className="component">
-
-              <div className="row">
-
-                <section>
-                  <h3>İletişim Bilgileri</h3>
-                </section>
-
-
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', }} >
+                  <div className="mdc-card__primary-action" tabindex="0">
+                    <h2 className="mdc-typography--headline6">Telefon:</h2>
+                    <p>+90 552 658 05 62</p>
+                  </div>
+                </div>
 
               </div>
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-3-desktop" >
 
-            </div>
-
-          </div>
-
-
-          <div className="container" >
-
-            <div className="component">
-
-              <div className="product">
-                <div className="product-text" style={{ flex: '1 1 100%', }}>
-                  <h3>Adres:</h3>
-                  <p>İsmet İnönü Bulvarı, Yenişehir Mersin 33110 TÜRKİYE</p>
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', }} >
+                  <div className="mdc-card__primary-action" tabindex="0">
+                    <h2 className="mdc-typography--headline6">E-Posta:</h2>
+                    <p>canata09074@gmail.com</p>
+                  </div>
                 </div>
+
               </div>
-              <div className="product">
-                <div className="product-text" style={{ flex: '1 1 100%', }}>
-                  <h3>Telefon:</h3>
-                  <p>+90 552 658 05 62</p>
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-2-desktop" >
+
+                <div className="mdc-card" style={{ padding: '16px', width: '100%', }} >
+                  <div className="mdc-card__primary-action" tabindex="0">
+                    <h2 className="mdc-typography--headline6">Website:</h2>
+                    <p>canata09.github.io/portfoy/</p>
+                  </div>
                 </div>
+
               </div>
-              <div className="product">
-                <div className="product-text" style={{ flex: '1 1 100%', }}>
-                  <h3>Eposta:</h3>
-                  <p>canata09074@gmail.com</p>
-                </div>
-              </div>
-              <div className="product">
-                <div className="product-text" style={{ flex: '1 1 100%', }}>
-                  <h3>Website</h3>
-                  <p>canata09.github.io/portfoy/</p>
-                </div>
+              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
+
               </div>
 
             </div>
-
           </div>
+          <div className="mdc-layout-grid full-width-grid">
+            <div className="mdc-layout-grid__inner">
 
-          <div className="container" >
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-6-desktop" >
 
-            <div className="component">
+                <form style={{ marginTop: '32px' }} >
 
-              <div className="col-sm">
-
-                <div style={{ width: '100%', height: '500px', backgroundColor: '#f8f9fa', }}>
-                  <form className="form-container" style={{ width: '100%', marginTop: '1rem' }}>
-
-                    <div className="form-group" >
-                      <input type="text" id="firstName" name="firstName" value="" placeholder='Adınız:' className="form-control" />
+                  <div className="mdc-form-field" style={{ marginTop: '16px', width: '100%' }} >
+                    <div className="mdc-text-field"  style={{ padding: '16px', width: '100%', }} >
+                      <input className="mdc-text-field__input" id="text-field-hero-input" />
+                      <div className="mdc-line-ripple"></div>
+                      <label for="text-field-hero-input" className="mdc-floating-label">Adınız:</label>
                     </div>
-
-                    <div className="form-group" >
-                      <input type="text" id="lastName" name="lastName" value="" placeholder='Soyadınız:' className="form-control" />
+                  </div>
+                  <div className="mdc-form-field" style={{ marginTop: '16px', width: '100%' }} >
+                    <div className="mdc-text-field"  style={{ padding: '16px', width: '100%', }} >
+                      <input className="mdc-text-field__input" id="text-field-hero-input" />
+                      <div className="mdc-line-ripple"></div>
+                      <label for="text-field-hero-input" className="mdc-floating-label">Soyadınız:</label>
                     </div>
-
-                    <div className="form-group">
-                      <input type="text" id="subject" name="subject" value="" placeholder='Konu' className="form-control" />
+                  </div>
+                  <div className="mdc-form-field" style={{ marginTop: '16px', width: '100%' }} >
+                    <div className="mdc-text-field"  style={{ padding: '16px', width: '100%', }} >
+                      <input className="mdc-text-field__input" id="text-field-hero-input" />
+                      <div className="mdc-line-ripple"></div>
+                      <label for="text-field-hero-input" className="mdc-floating-label">Konu:</label>
                     </div>
+                  </div>
+                  <div className="mdc-form-field" style={{ marginTop: '16px', width: '100%' }} >
+                    <label className="mdc-text-field mdc-text-field--filled mdc-text-field--textarea" style={{ padding: '16px', width: '100%', }} >
+                      <span className="mdc-text-field__ripple"></span>
+                      <span className="mdc-text-field__input-wrapper">
+                        <textarea className="mdc-text-field__input" rows="4" cols="40"
+                          aria-labelledby="textarea-label"></textarea>
+                      </span>
+                      <span id="textarea-label" className="mdc-floating-label">Mesajınız:</span>
+                    </label>
+                  </div>
+                  <button className="mdc-button mdc-button--raised" style={{ marginTop: '16px', width: '100%' }} >
+                    <span className="mdc-button__label">Mesaj Gönder</span>
+                  </button>
 
-                    <div className="form-group">
-                      <textarea type="text" id="message" name="message" cols='30' rows='7' value="" placeholder='Mesajınız' className="form-control" />
-                    </div>
-
-                    <button type="submit" className="submit-button">Mesaj Gönder</button>
-                  </form>
-                </div>
-
-
+                </form>
 
               </div>
-              <div className="col-md">
+              <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-5-desktop" >
 
                 <div style={{ width: '100%', height: '500px' }}>
 
@@ -874,161 +1503,397 @@
 
                 </div>
 
-
+              </div>
+              <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
 
               </div>
 
             </div>
-
-
           </div>
+        </>
+      );
+    };
 
+    function Cloud() {
+      const quotes = [
+        { text: "Şeref, hazırlıksız yakalanmamak değil, şerefsizliğe hiç bulaşmamaktır.", author: "Tema Uyumlu" },
+        { text: "İnsan, neye sahip olduğunu değil, neye dayandığını gösterdiğinde büyür.", author: "Friedrich Nietzsche" },
+        { text: "İnsanlar kendilerini değil, çıkarlarını savunurken daha yürekten konuşurlar.", author: "Friedrich Nietzsche" },
+        { text: "Zamanı zevk için değil, hedef için tüket; doğru zaman gelince zevk seni bulur.", author: "Tema Uyumlu" },
+        { text: "İnsan, çalıştığı saatlerde kendini inşa eder; geri kalan zamanlarda ise yalnızca tüketir.", author: "Goethe" },
+        { text: "Resmî etiketin sırtından inen, arkasından hançeri de bırakmaz.", author: "Tema Uyumlu" },
+        { text: "İnsanlar kendilerini değil, çıkarlarını savunurken daha yürekten konuşurlar.", author: "Friedrich Nietzsche" }
+      ];
 
-        </main>
+      const [index, setIndex] = useState(0);
+
+      useEffect(() => {
+        const interval = setInterval(() => {
+          setIndex(prev => (prev + 1) % quotes.length);
+        }, 5000); 
+
+        return () => clearInterval(interval); 
+      }, []);
+
+      const quote = quotes[index];
+
+      return (
+        <>
+          <section >
+            <h6 className="mdc-typography--headline6">Makaleler</h6>
+            <ul className="mdc-list" style={{ maxWidth: '360px', }}>
+              <li className="mdc-list-item" tabindex="0">
+                  <span className="mdc-list-item__ripple"></span>
+                  <a href="#" className="mdc-list-item__text">Giriş (8)</a>
+              </li>
+              <li className="mdc-list-item mdc-list-item--selected" aria-selected="true">
+                  <span className="mdc-list-item__ripple"></span>
+                  <span className="mdc-list-item__text">Projeler (6)</span>
+              </li>
+              <li className="mdc-list-divider" role="separator"></li>
+              <li className="mdc-list-item">
+                  <span className="mdc-list-item__ripple"></span>
+                  <span className="mdc-list-item__text">Kişilik (2)</span>
+              </li>
+            </ul>
+          </section>
+          <section style={{ marginTop: '32px', }}>
+            <div className="mdc-card demo-card demo-ui-control" style={{ width: '100%', background: 'none', boxShadow: 'none', }}>
+              <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row'}}>
+                  <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ width: '30%', margin: '10px', padding: '10px', backgroundImage: 'url("assets/icons/pdf.png")' }}></div>
+                  <div className="demo-card__primary">
+                  <h3 className="demo-card__subtitle mdc-typography mdc-typography--subtitle2">2025</h3>
+                  <a href="https://canata09.github.io/portfoy/can-ata.pdf" className="demo-card__title mdc-typography mdc-typography--headline6" >
+                    <span className="mdc-button__label" style={{color: '#002855', }}>Özgeçmişi Görüntüle →</span>
+                  </a>
+                  </div>
+              </div>
+            </div>
+          </section>
+          <section className="tag-cloud mdc-typography typography-section"  >
+            <h6 className="mdc-typography--headline6">Etiket Bulutu</h6>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">NODEJS</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">REACTJS</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">VUEJS</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">TYPESCRIPT</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">TAILWIND</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">HTML & CSS</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">JAVASCRIPT</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">WORDPRESS</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">WORDPRESS PLUGIN</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">GUTENBERG BLOCKS</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">OPENCART</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">PHP</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">TWIG</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">AJAX</span>
+            </button>
+            <button className="mdc-button mdc-button--outlined">
+              <span className="mdc-button__label">MYSQL</span>
+            </button>
+          </section>
+          <section className="mdc-typography typography-section"  >
+            <h6 className="mdc-typography--headline6">Konular</h6>
+            <p className="mdc-typography--body1">Ağ protokolleri / Sunucu / Veritabanı / CSS3 / Frontend teknolojileri, NodeJS, ES6, JavaScript, React.js, Vue.js, TypeScript, PHP, HTML5 / Render işleme teknikleri / WordPress, OpenCart Eklenti geliştirme bilgisi / API kullanımı, jQuery, JSON ve XML veri manipülasyonu / Kimlik Doğrulama protokolleri kurulumu / SEO / Sürüm kontrolü kullanımı / Web grafik tasarımı / İngilizce Dili / Sözlü Yazılı</p>
+          </section>
+          <section style={{ marginTop: '32px', }}>
+            <h6 className="mdc-typography--headline6">Günün Sözü</h6>
+            <div className="quote-box">
+              <div className="quote-text">“{quote.text}”</div>
+              <div className="quote-author">— {quote.author}</div>
+            </div>
+          </section>
+        </>
       );
     };
 
     const pagesMap = {
       projeler: Projeler,
-      experience: Experience,
-      about: About,
-      contact: Contact,
+      yetkinlikler: Yetkinlikler,
+      kurumsalyonetimpaneli: KurumsalYonetimPaneli,
+      wordpressblokeklenti: WordpressBlokEklenti,
+      kullanicimodulutasarimi: KullaniciModuluTasarimi,
+      wordpresseklenti: WordpressEklenti,
+      wordpresstema: WordpressTema,
+      wordpresshizoptimizasyonu: WordpressHizOptimizasyonu,
+      opencartyonetimpaneli: OpencartYonetimPaneli,
+      phpyonetimpaneli: PhpYonetimPaneli,
+      firmalargrubuyonetimpaneli: FirmalarGrubuYonetimPaneli,
+      opencarturunyonetimi: OpencartUrunYonetimi,
+      hakkimda: Hakkimda,
+      iletisim: Iletisim,
+    };
+
+    const Sidemenu = ({ handleClick, menuItems, handleMenuClick, isMobile }) => {
+      const drawerClass = `mdc-drawer ${isMobile ? 'mdc-drawer--modal' : 'mdc-drawer--dismissible mdc-drawer--open'}`;
+
+      return (
+        <>
+          <aside className={drawerClass}>
+            <div className="mdc-drawer__content">
+              <nav className="mdc-list">
+
+                <a className="mdc-list-item mdc-list-item--activated" href="#" aria-current="page" tabIndex="0" onClick={() => handleClick('projeler')}>
+                  <span className="mdc-list-item__ripple"></span>
+                  <i className="material-icons mdc-list-item__graphic" aria-hidden="true"
+                    style={{ color: '#1eafed' }} >inbox</i>
+                  <span className="mdc-list-item__text">Projeler</span>
+                </a>
+
+                <a className="mdc-list-item" href="#" onClick={() => handleClick('yetkinlikler')}>
+                  <span className="mdc-list-item__ripple"></span>
+                  <i className="material-icons mdc-list-item__graphic" aria-hidden="true">work</i>
+                  <span className="mdc-list-item__text">Yetkinlikler</span>
+                </a>
+
+                <hr className="mdc-list-divider" />
+
+                <h6 className="mdc-list-group__subheader">İletişim Bilgileri</h6>
+
+                <a className="mdc-list-item" href="#" onClick={() => handleClick('hakkimda')}>
+                  <span className="mdc-list-item__ripple"></span>
+                  <i className="material-icons mdc-list-item__graphic" aria-hidden="true">face</i>
+                  <span className="mdc-list-item__text">Hakkımda</span>
+                </a>
+
+                <a className="mdc-list-item" href="#" onClick={() => handleClick('iletisim')}>
+                  <span className="mdc-list-item__ripple"></span>
+                  <i className="material-icons mdc-list-item__graphic">drafts</i>
+                  <span className="mdc-list-item__text">İletişim</span>
+                </a>
+
+              </nav>
+            </div>
+            <div className="mdc-drawer__header">
+              <div className="masked mdc-drawer__title">Can Ata</div>
+              <div className="mdc-drawer__subtitle">CAN ATA. Her hakkı saklıdır</div>
+              <div className="mdc-list-item__graphic" style={{ margin: '16px' }} >
+
+                <section style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', }} >
+                  <a href="https://github.com/canata09"  >
+                    <span className="material-symbols">
+                      <i className="fab fa-square-github" style={{ fontSize: '37px', color: '#1eafed', }}></i>
+                    </span>
+                  </a>
+                  <a href="https://www.behance.net/canata3"  >
+                    <span className="mdc-button__label">
+                      <i className="fab fa-square-behance" style={{ fontSize: '37px', color: '#1eafed', }}></i>
+                    </span>
+                  </a>
+                  <a href="https://www.linkedin.com/in/canataweb"  >
+                    <span className="mdc-button__label">
+                      <i className="fab fa-linkedin" style={{ fontSize: '37px', color: '#1eafed', }}></i>
+                    </span>
+                  </a>
+                </section>
+
+              </div>
+
+
+            </div>
+          </aside>
+          {isMobile && <div className="mdc-drawer-scrim"></div>}
+        </>
+      );
     };
 
     function Header() {
       const [page, setPage] = useState('projeler');
+      const [isMobile, setIsMobile] = useState(window.matchMedia('(max-width: 900px)').matches);
+      const [activeSubmenu, setActiveSubmenu] = useState(null);
 
 
       const projelerMenuItems = [
         {
-          name: 'Projeler',
-          link: 'projeler',
+          name: 'Kurumsal Yönetim Paneli',
+          link: 'kurumsalyonetimpaneli',
           submenu: [
             {
-              name: 'Kurumsal Yönetim Paneli',
+              name: 'kurumsalyonetimpaneli',
               content: [
-                <h4>Teknik yapıştırıcı gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler Çimento esaslı sıvalar, Seramik yapıştırıcıları, Seramik derz dolguları gibi kategorilere dahildir. Kullanıcıların yapıştırıcı malzeme gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+                <p className="mdc-typography--body2">Teknik yapıştırıcı gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler Çimento esaslı sıvalar, Seramik yapıştırıcıları, Seramik derz dolguları gibi kategorilere dahildir. Kullanıcıların yapıştırıcı malzeme gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</p>
               ],
-              date: [<small>Şub, 2025 Kurumsal</small>],
-              url: "https://seremmetal.com/",
-            },
+            }
+          ]
+        },
+        {
+          name: 'Wordpress Blok Eklenti',
+          link: 'wordpressblokeklenti',
+          submenu: [
             {
-              name: 'WordPress Blok Eklenti',
+              name: 'wordpressblokeklenti',
               content: [
-                <h4>Mimarlık ve Mühendislik gibi alanlarda hizmet veren kurumsal firmanın websitesidir. Tanıtılan hizmetler mimarlık ve mühendislik hizmetleri gibi kategorilere dahildir. Kullanıcıların rahat yaşam gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+                <p className="mdc-typography--body2">Mimarlık ve Mühendislik gibi alanlarda hizmet veren kurumsal firmanın websitesidir. Tanıtılan hizmetler mimarlık ve mühendislik hizmetleri gibi kategorilere dahildir. Kullanıcıların rahat yaşam gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</p>
               ],
-              date: [<small>Oca, 2025 Kurumsal</small>],
-              url: "https://atayapimimarlik.gen.tr/",
-            },
+            }
+          ]
+        },
+        {
+          name: 'Kullanıcı Modülü Tasarımı',
+          link: 'kullanicimodulutasarimi',
+          submenu: [
             {
-              name: 'Kullanıcı Modülü Tasarımı',
+              name: 'kullanicimodulutasarimi',
               content: [
-                <h4>Üniversite öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler ÖABT, KPSS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+                <p className="mdc-typography--body2">Üniversite öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler ÖABT, KPSS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</p>
               ],
-              date: [<small>Ara, 2024 Çevrimiçi Eğitim Platformu</small>],
-              url: "#",
-            },
+            }
+          ]
+        },
+        {
+          name: 'Wordpress Eklenti',
+          link: 'wordpresseklenti',
+          submenu: [
             {
-              name: 'WordPress Eklenti',
+              name: 'wordpresseklenti',
               content: [
-                <h4>Tıp öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler TUS, DUS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+                <p className="mdc-typography--body2">Tıp öğrencilerine yönelik çevrimiçi derslerin konu anlatımını, deneme sınavlarının satışı yapılan bir e-ticaret websitesidir. Satılan çevrimiçi dersler TUS, DUS Ders konuları gibi kategorilere dahildir. Öğrencilerin eğitim ve öğretim gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</p>
               ],
-              date: [<small>Oca, 2024 Çevrimiçi Eğitim Platformu</small>],
-              url: "https://www.tusdata.com/",
-            },
+            }
+          ]
+        },
+        {
+          name: 'Wordpress Tema',
+          link: 'wordpresstema',
+          submenu: [
             {
-              name: 'WordPress Yönetim Paneli',
+              name: 'wordpresstema',
               content: [
-                <h4>Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi alanlarında reklamcılık yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+                <p className="mdc-typography--body2">Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi alanlarında reklamcılık yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</p>
               ],
-              date: [<small>Kas, 2023 Reklam</small>],
-              url: "https://www.aymucevher.com/",
-            },
+            }
+          ]
+        },
+        {
+          name: 'Wordpress Hız Optimizasyonu',
+          link: 'wordpresshizoptimizasyonu',
+          submenu: [
             {
-              name: 'OpenCart Yönetim Paneli',
+              name: 'wordpresshizoptimizasyonu',
               content: [
-                <h4>Dijital oyun kartı, Bilgisayar oyunları gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler tüm dijital ürünleri kategorilerini kapsamaktadır. Kullanıcıların dijital alanda eğlence gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+                <p className="mdc-typography--body2">Reklam prodüksiyon, Kreatif prodüksiyon ve Kamera çekimi görsel içerik üretimi alanlarında reklamcılık yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve prodüksiyon gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</p>
               ],
-              date: [<small>Tem, 2023 E-Ticaret</small>],
-              url: "https://www.etail.com.tr/",
-            },
+            }
+          ]
+        },
+        {
+          name: 'Opencart Yönetim Paneli',
+          link: 'opencartyonetimpaneli',
+          submenu: [
             {
-              name: 'PHP Yönetim Paneli',
+              name: 'opencartyonetimpaneli',
               content: [
-                <h4>Kripto para gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler kripto para haberleri gibi kategorilere dahildir. Kullanıcıların çevrimiçi varlık gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+                <p className="mdc-typography--body2">Dijital oyun kartı, Bilgisayar oyunları gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler tüm dijital ürünleri kategorilerini kapsamaktadır. Kullanıcıların dijital alanda eğlence gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</p>
               ],
-              date: [<small>Tem, 2022 E-Ticaret</small>],
-              url: "#",
-            },
+            }
+          ]
+        },
+        {
+          name: 'Php Yönetim Paneli',
+          link: 'phpyonetimpaneli',
+          submenu: [
             {
-              name: 'Firmalar Grubu Yönetim Paneli',
+              name: 'phpyonetimpaneli',
               content: [
-                <h4>Reklam, Tabela, Ahşap Giydirme ve Mühendislik gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve mühendislik gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+                <p className="mdc-typography--body2">Kripto para gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler kripto para haberleri gibi kategorilere dahildir. Kullanıcıların çevrimiçi varlık gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</p>
               ],
-              date: [<small>Nis, 2022 Kurumsal</small>],
-              url: "#",
-            },
+            }
+          ]
+        },
+        {
+          name: 'Firmalar Grubu Yönetim Paneli',
+          link: 'firmalargrubuyonetimpaneli',
+          submenu: [
             {
-              name: 'OpenCart Ürün Yönetimi',
+              name: 'firmalargrubuyonetimpaneli',
               content: [
-                <h4>Optik gözlük, Saat gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler aksesuar koleksiyonları gibi kategorilere dahildir. Kullanıcıların aksesuar gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır. </h4>
+                <p className="mdc-typography--body2">Reklam, Tabela, Ahşap Giydirme ve Mühendislik gibi alanlarda üretim yapan kurumsal firmanın websitesidir. Tanıtılan hizmetler tanıtıcı reklam hizmetleri gibi kategorilere dahildir. Kullanıcıların tanıtım ve mühendislik gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</p>
               ],
-              date: [<small>Kas, 2019 E-Ticaret</small>],
-              url: "https://www.saatciogullari.com/",
-            },
-
+            }
+          ]
+        },
+        {
+          name: 'Opencart Ürün Yönetimi',
+          link: 'opencarturunyonetimi',
+          submenu: [
+            {
+              name: 'opencarturunyonetimi',
+              content: [
+                <p className="mdc-typography--body2">Optik gözlük, Saat gibi ürünlerin satışı yapılan bir e-ticaret websitesidir. Satılan ürünler aksesuar koleksiyonları gibi kategorilere dahildir. Kullanıcıların aksesuar gereksinimlerine göre özelleştirilebilen, kullanıcı dostu bir platform sunulmaktadır.</p>
+              ],
+            }
           ]
         },
       ];
 
-      const [activeSubmenu, setActiveSubmenu] = useState(projelerMenuItems[0].submenu);
+
       const menuItems = [...projelerMenuItems];
-
-
-
 
       const handleClick = (newPage) => {
         setPage(newPage);
+        const drawerEl = document.querySelector('.mdc-drawer--modal');
+        if (drawerEl) {
+          const drawer = mdc.drawer.MDCDrawer.attachTo(drawerEl);
+          drawer.open = false;
+        }
       };
 
       const handleMenuClick = (submenu) => {
         setActiveSubmenu(submenu);
       };
 
-      const SelectedPage = pagesMap[page];
-
-
-
-
-      // Toggle dropdown menu visibility
-
-      // Toggle dropdown menu width
-      const [isExpanded, setExpanded] = useState(false);
-
-      const toggleMenu = () => {
-        setExpanded(!isExpanded);
-      };
-
-      const [isOpen, setIsOpen] = useState(true);
-
-      const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-      };
-
-      const handleClickOutside = (event) => {
-        const dropdownElement = document.querySelector('.sidebar');
-        if (dropdownElement && !dropdownElement.contains(event.target)) {
-          setIsOpen(false);
-        }
-      };
-
+      
       useEffect(() => {
-        document.addEventListener('click', handleClickOutside);
+        const topAppBarElement = document.querySelector('.mdc-top-app-bar');
+        const mainContent = document.querySelector('.main-content');
+        const drawerElement = document.querySelector('.mdc-drawer');
 
+        const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(topAppBarElement);
+        topAppBar.setScrollTarget(mainContent);
+        topAppBar.listen('MDCTopAppBar:nav', () => {
+          if (drawerElement.classList.contains('mdc-drawer--modal')) {
+            const drawer = mdc.drawer.MDCDrawer.attachTo(drawerElement);
+            drawer.open = !drawer.open;
+          }
+        });
+
+        const resizeHandler = () => {
+          setIsMobile(window.matchMedia('(max-width: 900px)').matches);
+        };
+
+        window.addEventListener('resize', resizeHandler);
         return () => {
-          document.removeEventListener('click', handleClickOutside);
+          window.removeEventListener('resize', resizeHandler);
         };
       }, []);
+
+      const SelectedPage = pagesMap[page];
 
 
       useEffect(() => {
@@ -1051,183 +1916,100 @@
       }, []);
 
       return (
-        <div className="App">
+        <>
+          <Sidemenu handleClick={handleClick} menuItems={menuItems} handleMenuClick={handleMenuClick} isMobile={isMobile} />
 
+          <div className="mdc-drawer-app-content">
 
-          <div className="sidebar"  >
-
-
-            <div className="tomenu" onClick={() => { setExpanded(false); }} >
-              <a className="hamburger-link" ><i class="fas fa-bars"></i></a>
-            </div>
-
-            <div className="dropdown-content" >
-              <div className={`sidedoc ${isExpanded ? 'expanded' : ''}`}>
-
-                <section>
-                  {menuItems.map((item, index) => (
-                    <div key={index} className="button">
-                      <a onClick={() => { handleMenuClick(item.submenu); handleClick(item.link); setIsOpen(true); toggleMenu(); }} href="#projects">
-                        <span style={{ fontSize: '16px', }}>{item.name}</span>
-                      </a>
-                    </div>
-                  ))}
-                  <div className="button"><a onClick={() => { handleClick('experience'); setExpanded(true); setIsOpen(false); }} href="#experience"><span style={{ fontSize: '16px', }}>Yetkinlikler</span></a></div>
-                  <div className="button"><a onClick={() => { handleClick('about'); setExpanded(true); setIsOpen(false); }} href="#about"><span style={{ fontSize: '16px', }}>Hakkımda</span></a></div>
-                  <div className="button"><a onClick={() => { handleClick('contact'); setExpanded(true); setIsOpen(false); }} href="#contact"><span style={{ fontSize: '16px', }}>İletişim</span></a></div>
+            <header className="mdc-top-app-bar">
+              <div className="mdc-top-app-bar__row">
+                <section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                  <button className="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button" >menu</button>
+                  <span className="mdc-top-app-bar__title">Can ATA: Developer Portfolio</span>
                 </section>
-                <section>
-
-                  <div className="masked">Can <br />Ata</div>
-
-                  <address>
-                    <p><small>&copy; 2025</small>CAN ATA. Her hakkı saklıdır</p>
-                  </address>
-
-
-                  <section style={{ display: 'inline-flex', flexDirection: 'row', flexWrap: 'nowrap', alignItems: 'stretch' }}>
-                    <a href="https://github.com/canata09">
-                      <i className="fab fa-square-github"></i>
-                    </a>
-                    <a href="https://www.behance.net/canata3">
-                      <i className="fab fa-square-behance"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/canataweb">
-                      <i className="fab fa-linkedin"></i>
-                    </a>
-                  </section>
-                </section>
-
-
               </div>
-              <div className="subdoc" style={{ display: isOpen ? 'block' : 'none' }} >
+            </header>
+
+
+            <main className="main-content mdc-top-app-bar--fixed-adjust">
 
 
 
-                <div className="container-fluid" >
+              <SelectedPage />
 
-                  <div className="component" style={{ padding: '0', height: '100%', }}>
+              <div className="mdc-layout-grid full-width-grid">
+                <div className="mdc-layout-grid__inner">
 
+                  <div className="column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-9-desktop"  >
 
-                    <div className="col-md">
+                    {menuItems.map((item, index) => (
+                      <div className="mdc-card" style={{ padding: '16px', width: '100%', }} >
 
-
-
-                      {activeSubmenu && activeSubmenu.length > 0 ? (
-                        activeSubmenu.map((subitem, index) => (
-                          <div className="gallery-item" key={index}>
-
-                            <div class="gallery-item-icon">
-                              <a href={subitem.url}>
-                                <i class="fas fa-file"></i>
-                              </a>
-                            </div>
-                            <div class="gallery-item-text">
-                              <a style={{ display: 'flex', flexDirection: 'column' }}>
-                                <h1>{subitem.name}</h1>
-                                {subitem.date}
-                                {subitem.content}
-                              </a>
-                              <a style={{ color: '#1eafed', }} onClick={() => { setIsOpen(false); handleMenuClick([subitem]) }}>Proje Ayrıntılarını Görüntüle →</a>
-                            </div>
-
-
+                        <div className="mdc-card__primary-action demo-card__primary-action" tabindex="0" style={{ display: 'flex', flexDirection: 'row', }} >
+                          <div className="mdc-card__media mdc-card__media--square demo-card__media" style={{ backgroundImage: 'url("assets/icons/document.svg")'}} ></div>
+                          <div className="demo-card__primary">
+                            <h3 className="mdc-typography--headline6" onClick={() => { handleMenuClick(item.submenu); }} >
+                              {item.name}
+                            </h3>
+                            <h4 className="mdc-typography--subtitle2">Şub, 2025 Kurumsal</h4>
+                            {/* FIX */}
+                            {item.submenu && item.submenu.map((sub, idx) => (
+                              <p className="mdc-typography--body2" key={idx}>{sub.content}</p>
+                            ))}
+                            {/* FIX */}
+                          </div>
+                        </div>
+                        <div className="mdc-card__actions">
+                          <div className="mdc-card__action-icons">
 
                           </div>
-                        ))
-                      ) : (
-                        <div>No content available</div>
-                      )}
+                          <div className="mdc-card__action-buttons">
+                            {/* FIX */}
+                            {item.submenu && item.submenu.map((sub, idx) => (
+                              <button className="mdc-button mdc-card__action mdc-card__action--button" onClick={() => { handleClick(sub.name); }} key={idx}>Proje Ayrıntılarını Görüntüle →</button>
+                            ))}
+                            {/* FIX */}
+                          </div>
+                        </div>
 
-
-
-                    </div>
-
-
-                    <div className="col-xs" style={{ height: '100%', backgroundColor: '#f8f9fa', margin: '0% 4%', }}>
-
-
-                      <section>
-                        <h3>Makaleler</h3>
-                        <ul>
-                          <li>Giriş
-                            <span>(8)</span>
-                          </li>
-                          <li>Yetkinlikler
-                            <span>(6)</span>
-                          </li>
-                          <li>Kişilik
-                            <span>(2)</span>
-                          </li>
-                        </ul>
-                      </section>
-                      <div style={{ marginBottom: '20px', width: '100%', textAlign: 'left' }}>
-                        <ul style={{ listStyleType: 'none', padding: '0', margin: '0', width: '100%' }}>
-                          <li>
-                            <a href="./can-ata.pdf" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#f9f9f9', marginBottom: '10px', padding: '10px 15px' }}>
-                              <img src="assets/icon/pdf.png" alt="Article Image" style={{ width: '100px', borderRadius: '4px' }} />
-                              <div style={{ marginLeft: '15px', marginBottom: '15px', width: '100%' }}>
-                                <p style={{ color: '#999', fontSize: '12px' }}>2025</p>
-                                <h4 style={{ fontSize: '14px', margin: '10px 0' }}>Tam Özgeçmişi Görüntüle</h4>
-                              </div>
-                            </a>
-                          </li>
-                        </ul>
                       </div>
-                      <section>
-                        <h3>Etiket Bulutu</h3>
-                      </section>
-                      <section style={{ flexDirection: 'row', }}>
-                        <span className="tag">NODEJS</span>
-                        <span className="tag">REACTJS</span>
-                        <span className="tag">VUEJS</span>
-                        <span className="tag">TYPESCRIPT</span>
-                        <span className="tag">TAILWIND</span>
-                        <span className="tag">HTML & CSS</span>
-                        <span className="tag">JAVASCRIPT</span>
-                        <span className="tag">WORDPRESS</span>
-                        <span className="tag">WORDPRESS PLUGIN</span>
-                        <span className="tag">GUTENBERG BLOCKS</span>
-                        <span className="tag">OPENCART</span>
-                        <span className="tag">PHP</span>
-                        <span className="tag">TWIG</span>
-                        <span className="tag">AJAX</span>
-                        <span className="tag">MYSQL</span>
-                      </section>
-                      <section>
-                        <h3>Konular</h3>
+                    ))}
+
+                  </div>
+                  <div className="three column mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-2-desktop"  >
+
+                    {/*
+                      {activeSubmenu && (
                         <ul>
-                          <li>Ağ protokolleri / Sunucu / Veritabanı / CSS3 / Frontend teknolojileri, NodeJS, ES6, JavaScript, React.js, Vue.js, TypeScript, PHP, HTML5 / Render işleme teknikleri / WordPress, OpenCart Eklenti geliştirme bilgisi / API kullanımı, jQuery, JSON ve XML veri manipülasyonu / Kimlik Doğrulama protokolleri kurulumu / SEO / Sürüm kontrolü kullanımı / Web grafik tasarımı / İngilizce Dili / Sözlü Yazılı</li>
+                          {activeSubmenu.map((subitem, index) => {
+                            const handleSubfunction = () => {
+                              handleClick(subitem.name);
+                            };
+
+                            return (
+                              <a onClick={handleSubfunction} href={`#${subitem.name}`} key={index}>{subitem.content}</a>
+                            );
+                          })}
                         </ul>
-                      </section>
+                      )}
+                    */}
+                    <Cloud />
 
-
-
-
-
-                    </div>
+                  </div>
+                  <div className="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-1-desktop" >
 
                   </div>
 
                 </div>
-
-
-
-
               </div>
-            </div>
 
+
+              <div className="gtranslate_wrapper"></div>
+            </main>
 
           </div>
 
-          <SelectedPage activeSubmenu={activeSubmenu} />
-
-
-
-
-
-          <div className="gtranslate_wrapper"></div>
-        </div>
+        </>
       );
     };
 
@@ -1241,13 +2023,12 @@
     const container = document.getElementById('root');
     const root = ReactDOM.createRoot(container);
     root.render(
+
       <App />
 
     )
   </script>
+
 </body>
 
-
 </html>
-
-

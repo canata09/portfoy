@@ -1,0 +1,51 @@
+
+.mdc-top-app-bar {
+    background-color: #fff !important;
+}
+
+.mdc-top-app-bar__title { 
+    color: #1eafed !important;
+}
+
+.mdc-top-app-bar__navigation-icon { 
+    color: #fff;
+}
+
+@media only screen and (max-width: 1024px) {
+    .mdc-top-app-bar__navigation-icon { 
+        color: #1eafed !important;
+    }
+}
+
+@media (max-width: 839px) {
+    .mdc-top-app-bar__row {
+        height: auto !important;
+    }
+}
+
+.mdc-top-app-bar--fixed-adjust {
+    width: 100%;
+    padding-top: 90px;
+}
+
+@media (max-width: 599px) {
+    .mdc-top-app-bar--fixed-adjust {
+        width: 100%;
+        padding-top: 85px;
+    }
+}
+
+.mdc-drawer__content {
+    padding-top: 58px;
+}
+
+.masked {
+    font-family: "Abril Fatface", cursive !important;
+    line-height: 0.8 !important;
+    font-size: 80px !important;
+    font-weight: bold !important;
+    background: url('https://themewagon.github.io/andrea/images/bg_1.jpg') no-repeat;
+    background-size: contain;
+    -webkit-background-clip: text;
+    color: transparent !important;
+}
