@@ -39,6 +39,10 @@
     padding-top: 58px;
 }
 
+.mdc-drawer__content > .mdc-list .mdc-list-item {
+    padding: 10px;
+}
+
 .masked {
     font-family: "Abril Fatface", cursive !important;
     line-height: 0.8 !important;
