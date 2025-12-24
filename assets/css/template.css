@@ -113,6 +113,10 @@ blockquote {
     padding: 16px 32px;
 }
 
+/*
+ * Slider Container
+ */
+ 
 .slider-container {
   width: 100%;
   overflow: hidden;
