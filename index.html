@@ -1464,29 +1464,32 @@
 
                 <form className="app-form" >
 
-                  <div className="mdc-form-field" style={{ marginTop: '16px', width: '100%' }} >
-                    <div className="mdc-text-field"  style={{ padding: '16px', width: '100%', }} >
-                      <input className="mdc-text-field__input" id="text-field-hero-input" />
-                      <div className="mdc-line-ripple"></div>
-                      <label for="text-field-hero-input" className="mdc-floating-label">Adınız:</label>
-                    </div>
+                  <div className="mdc-form-field" >
+                    <label className="mdc-text-field">
+                      <span className="mdc-text-field__ripple"></span>
+                      <span className="mdc-floating-label" id="text-field-hero-input">Adınız:</span>
+                      <input type="text" className="mdc-text-field__input" aria-labelledby="text-field-hero-input" />
+                      <span className="mdc-line-ripple"></span>
+                    </label>
                   </div>
-                  <div className="mdc-form-field" style={{ marginTop: '16px', width: '100%' }} >
-                    <div className="mdc-text-field"  style={{ padding: '16px', width: '100%', }} >
-                      <input className="mdc-text-field__input" id="text-field-hero-input" />
-                      <div className="mdc-line-ripple"></div>
-                      <label for="text-field-hero-input" className="mdc-floating-label">Soyadınız:</label>
-                    </div>
+                  <div className="mdc-form-field" >
+                    <label className="mdc-text-field">
+                      <span className="mdc-text-field__ripple"></span>
+                      <span className="mdc-floating-label" id="text-field-hero-input">Soyadınız:</span>
+                      <input type="text" className="mdc-text-field__input" aria-labelledby="text-field-hero-input" />
+                      <span className="mdc-line-ripple"></span>
+                    </label>
                   </div>
-                  <div className="mdc-form-field" style={{ marginTop: '16px', width: '100%' }} >
-                    <div className="mdc-text-field"  style={{ padding: '16px', width: '100%', }} >
-                      <input className="mdc-text-field__input" id="text-field-hero-input" />
-                      <div className="mdc-line-ripple"></div>
-                      <label for="text-field-hero-input" className="mdc-floating-label">Konu:</label>
-                    </div>
+                  <div className="mdc-form-field" >
+                    <label className="mdc-text-field">
+                      <span className="mdc-text-field__ripple"></span>
+                      <span className="mdc-floating-label" id="text-field-hero-input">Konu:</span>
+                      <input type="text" className="mdc-text-field__input" aria-labelledby="text-field-hero-input" />
+                      <span className="mdc-line-ripple"></span>
+                    </label>
                   </div>
-                  <div className="mdc-form-field" style={{ marginTop: '16px', width: '100%' }} >
-                    <label className="mdc-text-field mdc-text-field--filled mdc-text-field--textarea" style={{ padding: '16px', width: '100%', }} >
+                  <div className="mdc-form-field" >
+                    <label className="mdc-text-field mdc-text-field--filled mdc-text-field--textarea" >
                       <span className="mdc-text-field__ripple"></span>
                       <span className="mdc-text-field__input-wrapper">
                         <textarea className="mdc-text-field__input" rows="4" cols="40"
