@@ -9,10 +9,10 @@
     background: #f8f9fa;
 }
 
-.fluid {
+.full-width-grid {
     height: auto;
     width: 100%;
-    padding: 0 16px;
+    padding: 0 !important;
     box-sizing: border-box;
 }
 
@@ -119,4 +119,5 @@
 
 div.mdc-chip > * {
     color: #fff !important;
+
 }
